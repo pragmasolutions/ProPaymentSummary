@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{98A6C1
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ProPaymentSummary.Database", "ProPaymentSummary.Database\ProPaymentSummary.Database.sqlproj", "{4EF2A05E-7721-478A-92D8-D0239BD035A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,12 @@ Global
 		{17596385-2366-4946-8504-C1AF4FBF1C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17596385-2366-4946-8504-C1AF4FBF1C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17596385-2366-4946-8504-C1AF4FBF1C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
