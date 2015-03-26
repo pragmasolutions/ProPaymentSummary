@@ -19,15 +19,13 @@ jQuery(function($) {
 
 	//smooth scroll
 	$('.navbar-nav > li.page-nav').click(function(event) {
-		
 		var target = $(this).find('>a').prop('hash');
 		if ($(target)[0]) {
-		    
+		    event.preventDefault();
 		    $('html, body').animate({
 		        scrollTop: $(target).offset().top
 		    }, 500);
 		}
-		
 	});
 
 	//scrollspy
