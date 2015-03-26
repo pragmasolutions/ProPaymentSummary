@@ -58,6 +58,7 @@ namespace ProPaymentSummary.Web.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.CustomPage = "hidden";
             return View();
         }
 

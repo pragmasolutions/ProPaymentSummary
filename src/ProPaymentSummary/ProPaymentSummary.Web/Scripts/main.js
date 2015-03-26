@@ -19,11 +19,15 @@ jQuery(function($) {
 
 	//smooth scroll
 	$('.navbar-nav > li.page-nav').click(function(event) {
-		event.preventDefault();
+		
 		var target = $(this).find('>a').prop('hash');
-		$('html, body').animate({
-			scrollTop: $(target).offset().top
-		}, 500);
+		if ($(target)[0]) {
+		    event.preventDefault();
+		    $('html, body').animate({
+		        scrollTop: $(target).offset().top
+		    }, 500);
+		}
+		
 	});
 
 	//scrollspy
