@@ -59,23 +59,6 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-<<<<<<< HEAD
-    <Folder Include="dbo\" />
-    <Folder Include="dbo\Tables\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="dbo\Tables\AspNetUsers.sql" />
-    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
-    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
-    <Build Include="dbo\Tables\__MigrationHistory.sql" />
-    <Build Include="dbo\Tables\Order.sql" />
-    <Build Include="dbo\Tables\Practice.sql" />
-    <Build Include="dbo\Tables\PracticeOrder.sql" />
-    <Build Include="dbo\Tables\HealthInsuranceProvider.sql" />
-    <Build Include="dbo\Tables\Professional.sql" />
-    <Build Include="dbo\Tables\AspNetRoles.sql" />
-    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
-=======
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
   </ItemGroup>
@@ -94,6 +77,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ProPaymentSummary.Database.publish.xml" />
->>>>>>> origin/master
   </ItemGroup>
 </Project>
