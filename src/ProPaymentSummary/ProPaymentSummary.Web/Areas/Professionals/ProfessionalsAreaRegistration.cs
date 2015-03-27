@@ -2,11 +2,11 @@
 
 namespace ProPaymentSummary.Web.Areas.Professionals
 {
-    public class ProfessionalsAreaRegistration : AreaRegistration 
+    public class ProfessionalsAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Professionals";
             }
@@ -17,7 +17,8 @@ namespace ProPaymentSummary.Web.Areas.Professionals
             context.MapRoute(
                 "Professionals_default",
                 "Professionals/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index",controller = "Home", id = UrlParameter.Optional },
+                new[] { "ProPaymentSummary.Web.Areas.Professionals.Controllers" } 
             );
         }
     }
