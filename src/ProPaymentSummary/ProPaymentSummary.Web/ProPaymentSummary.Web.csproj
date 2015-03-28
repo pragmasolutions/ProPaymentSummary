@@ -977,6 +977,7 @@
     <Content Include="Areas\Professionals\app\js\angular\version.txt" />
     <Content Include="Areas\Professionals\app\js\app.js" />
     <Content Include="Areas\Professionals\app\js\controllers.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\user\profileController.js" />
     <Content Include="Areas\Professionals\app\js\controllers\order\orderController.js" />
     <Content Include="Areas\Professionals\app\js\directives.js" />
     <Content Include="Areas\Professionals\app\js\factory.js" />
