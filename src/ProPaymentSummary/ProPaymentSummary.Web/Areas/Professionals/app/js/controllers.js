@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('xenon.controllers', []).
+angular.module('xenon.controllers', ['kendo.directives']).
 	controller('LoginCtrl', function($scope, $rootScope)
 	{
 		$rootScope.isLoginPage        = true;

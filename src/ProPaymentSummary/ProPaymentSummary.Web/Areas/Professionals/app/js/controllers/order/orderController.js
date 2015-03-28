@@ -5,7 +5,7 @@
     var module = angular.module('xenon.controllers');
 
     module.controller('orderListController', function ($rootScope, $location, orderDataSource) {
-        debugger
+        
             var model = this;
             
             orderDataSource.filter({});

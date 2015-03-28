@@ -13,6 +13,8 @@ var app = angular.module('xenon-app', [
 	'xenon.factory',
 	'xenon.services',
 
+    'kendo.directives',
+
 	// Added in v1.3
 	'FBAngular'
 ]);
