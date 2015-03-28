@@ -83,6 +83,10 @@ angular.module('xenon.services', []).
 
 		this.prepareSidebarMenu = function()
 		{
+		    var orders = this.addItem('Ordenes', '/app/orders-list', 'fa fa-file-text-o');
+		    var patients = this.addItem('Pacientes', '/app/patients', 'fa fa-male');
+		    var healthInsuranceProviders = this.addItem('Pre Pagas', '/app/healthInsuranceProviders', 'fa fa-hospital-o');
+
 			var dashboard    = this.addItem('Dashboard', 		'/app/dashboard', 			'linecons-cog');
 			var layouts      = this.addItem('Layout & Skins',	'/app/layout-and-skins',	'linecons-desktop');
 			var ui_elements  = this.addItem('UI Elements', 		'/app/ui', 					'linecons-note');

@@ -110,6 +110,12 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 				}
 			}
 		}).
+        
+        // Orders
+		state('app.orders-list', {
+		    url: '/orders-list',
+		    templateUrl: appHelper.templatePath('orders/list'),
+		}).
 
 		// Update Highlights
 		state('app.update-highlights', {

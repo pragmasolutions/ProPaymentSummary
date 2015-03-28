@@ -1013,6 +1013,7 @@
     <Content Include="Areas\Professionals\app\tpls\mailbox\compose.html" />
     <Content Include="Areas\Professionals\app\tpls\mailbox\inbox.html" />
     <Content Include="Areas\Professionals\app\tpls\mailbox\message.html" />
+    <Content Include="Areas\Professionals\app\tpls\orders\list.html" />
     <Content Include="Areas\Professionals\app\tpls\tables\basic.html" />
     <Content Include="Areas\Professionals\app\tpls\tables\datatables.html" />
     <Content Include="Areas\Professionals\app\tpls\tables\responsive.html" />
