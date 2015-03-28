@@ -39,7 +39,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__MigrationHistory.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HealthInsuranceProvider.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Practice.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PracticeOrder.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Professional.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProPaymentSummaryModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ProPaymentSummaryModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ProPaymentSummaryModel.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
