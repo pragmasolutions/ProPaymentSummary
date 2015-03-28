@@ -12,13 +12,11 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
-    public partial class BioquimicaEntities : DbContext
+    public partial class ProPaymentSummaryEntities : DbContext
     {
-        public BioquimicaEntities()
-            : base("name=BioquimicaEntities")
+        public ProPaymentSummaryEntities()
+            : base("name=ProPaymentSummaryEntities")
         {
         }
     
@@ -27,7 +25,6 @@ namespace ProPaymentSummary.Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
@@ -37,5 +34,6 @@ namespace ProPaymentSummary.Entities
         public virtual DbSet<Practice> Practices { get; set; }
         public virtual DbSet<PracticeOrder> PracticeOrders { get; set; }
         public virtual DbSet<Professional> Professionals { get; set; }
+        public virtual DbSet<Province> Provinces { get; set; }
     }
 }

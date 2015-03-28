@@ -5,16 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProPaymentSummaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
-        </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -109,7 +99,7 @@
           <Key>
             <PropertyRef Name="ProfessionalId" />
           </Key>
-          <Property Name="ProfessionalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProfessionalId" Type="nvarchar" MaxLength="128" Nullable="false" StoreGeneratedPattern="None" />
           <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
@@ -118,7 +108,15 @@
           <Property Name="DNI" Type="int" Nullable="false" />
           <Property Name="MP" Type="varchar" MaxLength="50" />
           <Property Name="MN" Type="varchar" MaxLength="50" />
-          <Property Name="Province" Type="varchar" MaxLength="50" />
+          <Property Name="ProvinceId" Type="int" />
+          <Property Name="City" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -212,8 +210,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Professional_Province">
+          <End Role="Province" Type="Self.Province" Multiplicity="0..1" />
+          <End Role="Professional" Type="Self.Professional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Professional">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ProPaymentSummaryModelStoreContainer">
-          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
@@ -224,6 +233,7 @@
           <EntitySet Name="Practice" EntityType="Self.Practice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PracticeOrder" EntityType="Self.PracticeOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Professional" EntityType="Self.Professional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -252,13 +262,16 @@
             <End Role="Practice" EntitySet="Practice" />
             <End Role="PracticeOrder" EntitySet="PracticeOrder" />
           </AssociationSet>
+          <AssociationSet Name="FK_Professional_Province" Association="Self.FK_Professional_Province">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="Professional" EntitySet="Professional" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProPaymentSummaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="BioquimicaEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="C__MigrationHistory" EntityType="ProPaymentSummaryModel.C__MigrationHistory" />
+        <EntityContainer Name="ProPaymentSummaryEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="AspNetRoles" EntityType="ProPaymentSummaryModel.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="ProPaymentSummaryModel.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="ProPaymentSummaryModel.AspNetUserLogin" />
@@ -292,17 +305,12 @@
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="Provinces" EntityType="ProPaymentSummaryModel.Province" />
+          <AssociationSet Name="FK_Professional_Province" Association="ProPaymentSummaryModel.FK_Professional_Province">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Professional" EntitySet="Professionals" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="C__MigrationHistory">
-          <Key>
-            <PropertyRef Name="MigrationId" />
-            <PropertyRef Name="ContextKey" />
-          </Key>
-          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -401,7 +409,7 @@
           <Key>
             <PropertyRef Name="ProfessionalId" />
           </Key>
-          <Property Name="ProfessionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfessionalId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -410,7 +418,9 @@
           <Property Name="DNI" Type="Int32" Nullable="false" />
           <Property Name="MP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProvinceId" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Province" Relationship="ProPaymentSummaryModel.FK_Professional_Province" FromRole="Professional" ToRole="Province" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="ProPaymentSummaryModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -480,22 +490,32 @@
           <End Type="ProPaymentSummaryModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="ProPaymentSummaryModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Professionals" Relationship="ProPaymentSummaryModel.FK_Professional_Province" FromRole="Province" ToRole="Professional" />
+        </EntityType>
+        <Association Name="FK_Professional_Province">
+          <End Type="ProPaymentSummaryModel.Province" Role="Province" Multiplicity="0..1" />
+          <End Type="ProPaymentSummaryModel.Professional" Role="Professional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Professional">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProPaymentSummaryModelStoreContainer" CdmEntityContainer="BioquimicaEntities" >
-          <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="ProPaymentSummaryModel.C__MigrationHistory">
-              <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="ProPaymentSummaryModelStoreContainer" CdmEntityContainer="ProPaymentSummaryEntities" >
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="ProPaymentSummaryModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -587,7 +607,8 @@
           <EntitySetMapping Name="Professionals">
             <EntityTypeMapping TypeName="ProPaymentSummaryModel.Professional">
               <MappingFragment StoreEntitySet="Professional">
-                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
                 <ScalarProperty Name="MN" ColumnName="MN" />
                 <ScalarProperty Name="MP" ColumnName="MP" />
                 <ScalarProperty Name="DNI" ColumnName="DNI" />
@@ -608,6 +629,14 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="ProPaymentSummaryModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

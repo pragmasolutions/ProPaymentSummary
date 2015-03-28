@@ -50,6 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\DynamicQueryable.cs" />
+    <Compile Include="Helpers\IRepositoryProvider.cs" />
+    <Compile Include="Helpers\PagedMetadata.cs" />
+    <Compile Include="Helpers\PagedResultList.cs" />
+    <Compile Include="Helpers\PagingCriteria.cs" />
+    <Compile Include="Helpers\PredicateBuilder.cs" />
+    <Compile Include="Helpers\RepositoryFactories.cs" />
+    <Compile Include="Helpers\RepositoryProvider.cs" />
+    <Compile Include="Helpers\SortHelper.cs" />
+    <Compile Include="Helpers\UowFactory.cs" />
+    <Compile Include="Interfaces\IProPaymentSummaryUow.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUowFactory.cs" />
+    <Compile Include="ProPaymentSummaryUow.cs" />
     <Compile Include="ProPaymentSummaryModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -61,6 +75,8 @@
       <DependentUpon>ProPaymentSummaryModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\EFBaseRepository.cs" />
+    <Compile Include="Repository\EFRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -69,6 +85,7 @@
     <EntityDeploy Include="ProPaymentSummaryModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProPaymentSummaryModel.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ProPaymentSummary.Entities</CustomToolNamespace>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
@@ -78,12 +95,17 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ProPaymentSummaryModel.edmx</DependentUpon>
       <LastGenOutput>ProPaymentSummaryModel.Context.cs</LastGenOutput>
+      <CustomToolNamespace>ProPaymentSummary.Entities</CustomToolNamespace>
     </None>
     <None Include="ProPaymentSummaryModel.edmx.diagram">
       <DependentUpon>ProPaymentSummaryModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Framework.Ioc\Framework.Ioc.csproj">
+      <Project>{e798e2fc-63af-439d-933c-5a93e018cfa4}</Project>
+      <Name>Framework.Ioc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProPaymentSummary.Entities\ProPaymentSummary.Entities.csproj">
       <Project>{17596385-2366-4946-8504-c1af4fbf1c5f}</Project>
       <Name>ProPaymentSummary.Entities</Name>

@@ -59,6 +59,9 @@
     <Reference Include="Microsoft.Spatial">
       <HintPath>..\packages\Microsoft.Spatial.6.9.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Spatial.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -1073,6 +1076,7 @@
     <Content Include="Areas\Professionals\app\tpls\ui\tabs-accordions.html" />
     <Content Include="Areas\Professionals\app\tpls\ui\typography.html" />
     <Content Include="Areas\Professionals\app\tpls\update-highlights.html" />
+    <Content Include="Areas\Professionals\app\tpls\user\profile.html" />
     <Content Include="Areas\Professionals\app\tpls\widgets.html" />
     <Content Include="Areas\Professionals\assets\css\bootstrap.css" />
     <Content Include="Areas\Professionals\assets\css\custom.css" />

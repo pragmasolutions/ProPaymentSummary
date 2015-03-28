@@ -1,0 +1,149 @@
+
+
+	<page-title ng-if="layoutOptions.pageTitles" title="Profile" description="User profile and story timeline"></page-title>
+
+
+<script>
+    app.controller('UserProfileCtrl', function ($scope, $element) {
+        $scope.LastName = "Rossi Querin";
+        $scope.FirstName = "Juan Pablo";
+        $scope.Address = "Brasil 1060";
+        $scope.ProvinceId = "1";
+        $scope.City = "Corrientes";
+        $scope.Phone = "4433687";
+        $scope.CUIT = "20-32405064-8";
+        $scope.DNI = "32405064";
+        $scope.MN = "123456";
+    })
+</script>
+<section class="profile-env">
+	
+    <div class="row">
+
+        <div class="col-sm-3">
+
+            <!-- User Info Sidebar -->
+            <div class="user-info-sidebar">
+
+                <a href="" class="user-img">
+                    <img src="/Areas/Professionals/assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
+                </a>
+
+                <a href="" class="user-name">Cambiar Imagen</a>
+                <hr />
+            </div>
+
+        </div>
+
+        <div class="col-sm-9">
+
+            <div class="panel panel-default" ng-app="bioweb">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Informaci&oacute;n de Profesional</h3>
+                </div>
+                <div class="panel-body" ng-controller="UserProfileCtrl">
+
+                    <form role="form" class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="LastName">Apellido</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="LastName" disabled ng-model="LastName">
+                            </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="FirstName">Nombre</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="FirstName" disabled ng-model="FirstName">
+                            </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="Address">Direcci&oacute;n</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Address" disabled ng-model="Address">
+                            </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="Province">Provincia</label>
+
+                            <div class="col-sm-10">
+                                <select class="form-control" id="Province" disabled ng-model="ProvinceId">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                    <option>Option 4</option>
+                                    <option>Option 5</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="City">Ciudad</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="City" disabled ng-model="City">
+                            </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="Phone">Tel&eacute;fono</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="Phone" disabled ng-model="Phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="CUIT">CUIT</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="CUIT" inputmask data-mask="99-99999999-9" disabled ng-model="CUIT">
+                            </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="DNI">DNI</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="DNI" disabled ng-model="DNI">
+                            </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="MN">Nº Matr&iacute;cula</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="MN" disabled ng-model="MN">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+	
+</section>

@@ -812,7 +812,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 				},
 			}
 		}).
-		state('lockscreen', {
+        state('lockscreen', {
 			url: '/lockscreen',
 			templateUrl: appHelper.templatePath('lockscreen'),
 			controller: 'LockscreenCtrl',
@@ -824,7 +824,21 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 					]);
 				},
 			}
-		});
+        }).
+
+        //Profesional
+        state('app.user-profile', {
+            url: '/user-profile',
+            templateUrl: appHelper.templatePath('user/profile'),
+            resolve: {
+                profile: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+						ASSETS.core.googleMapsLoader,
+						ASSETS.icons.elusive,
+                    ]);
+                },
+            }
+        });
 });
 
 
@@ -839,7 +853,7 @@ app.constant('ASSETS', {
 
 		'moment': appHelper.assetPath('js/moment.min.js'),
 
-		'googleMapsLoader': appHelper.assetPath('app/js/angular-google-maps/load-google-maps.js')
+		'googleMapsLoader': appHelper.rootPath('app/js/angular-google-maps/load-google-maps.js')
 	},
 
 	'charts': {
