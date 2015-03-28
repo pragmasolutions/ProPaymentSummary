@@ -812,7 +812,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 				},
 			}
 		}).
-		state('lockscreen', {
+        state('lockscreen', {
 			url: '/lockscreen',
 			templateUrl: appHelper.templatePath('lockscreen'),
 			controller: 'LockscreenCtrl',
@@ -824,7 +824,21 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 					]);
 				},
 			}
-		});
+        }).
+
+        //Profesional
+        state('app.user-profile', {
+            url: '/user-profile',
+            templateUrl: appHelper.templatePath('user/profile'),
+            resolve: {
+                profile: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+						ASSETS.core.googleMapsLoader,
+						ASSETS.icons.elusive,
+                    ]);
+                },
+            }
+        });
 });
 
 

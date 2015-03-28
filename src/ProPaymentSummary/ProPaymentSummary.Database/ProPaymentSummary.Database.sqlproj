@@ -74,8 +74,12 @@
     <Build Include="dbo\Tables\Practice.sql" />
     <Build Include="dbo\Tables\PracticeOrder.sql" />
     <Build Include="dbo\Tables\Professional.sql" />
+    <Build Include="dbo\Tables\Province.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ProPaymentSummary.Database.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ProPaymentSummary.Database.refactorlog" />
   </ItemGroup>
 </Project>

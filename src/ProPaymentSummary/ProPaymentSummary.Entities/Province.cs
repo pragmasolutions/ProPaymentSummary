@@ -12,11 +12,16 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class C__MigrationHistory
+    public partial class Province
     {
-        public string MigrationId { get; set; }
-        public string ContextKey { get; set; }
-        public byte[] Model { get; set; }
-        public string ProductVersion { get; set; }
+        public Province()
+        {
+            this.Professionals = new HashSet<Professional>();
+        }
+    
+        public int ProvinceId { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<Professional> Professionals { get; set; }
     }
 }

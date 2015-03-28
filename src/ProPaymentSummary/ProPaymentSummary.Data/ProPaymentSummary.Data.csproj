@@ -67,6 +67,7 @@
     <EntityDeploy Include="ProPaymentSummaryModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProPaymentSummaryModel.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ProPaymentSummary.Entities</CustomToolNamespace>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +77,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ProPaymentSummaryModel.edmx</DependentUpon>
       <LastGenOutput>ProPaymentSummaryModel.Context.cs</LastGenOutput>
+      <CustomToolNamespace>ProPaymentSummary.Entities</CustomToolNamespace>
     </None>
     <None Include="ProPaymentSummaryModel.edmx.diagram">
       <DependentUpon>ProPaymentSummaryModel.edmx</DependentUpon>

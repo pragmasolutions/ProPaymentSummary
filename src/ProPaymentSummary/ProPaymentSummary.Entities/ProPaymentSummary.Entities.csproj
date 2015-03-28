@@ -51,9 +51,6 @@
     <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="C__MigrationHistory.cs">
-      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="HealthInsuranceProvider.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
@@ -75,6 +72,9 @@
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Province.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

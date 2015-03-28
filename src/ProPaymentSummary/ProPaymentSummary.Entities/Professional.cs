@@ -14,7 +14,7 @@ namespace ProPaymentSummary.Entities
     
     public partial class Professional
     {
-        public int ProfessionalId { get; set; }
+        public string ProfessionalId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Address { get; set; }
@@ -23,6 +23,9 @@ namespace ProPaymentSummary.Entities
         public int DNI { get; set; }
         public string MP { get; set; }
         public string MN { get; set; }
-        public string Province { get; set; }
+        public Nullable<int> ProvinceId { get; set; }
+        public string City { get; set; }
+    
+        public virtual Province Province { get; set; }
     }
 }

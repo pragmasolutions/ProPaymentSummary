@@ -1030,6 +1030,7 @@
     <Content Include="Areas\Professionals\app\tpls\ui\tabs-accordions.html" />
     <Content Include="Areas\Professionals\app\tpls\ui\typography.html" />
     <Content Include="Areas\Professionals\app\tpls\update-highlights.html" />
+    <Content Include="Areas\Professionals\app\tpls\user\profile.html" />
     <Content Include="Areas\Professionals\app\tpls\widgets.html" />
     <Content Include="Areas\Professionals\assets\css\bootstrap.css" />
     <Content Include="Areas\Professionals\assets\css\custom.css" />
