@@ -38,7 +38,7 @@
                                              { field: "healthInsuranceProviderName", title: "Pre Paga" },
                                              { field: "patientName", title: "Title" },
                                              { field: "PatientDNI" },
-                                             { field: "attentionDate" }]'
+                                             { field: "attentionDate",type: "date", format:"{0:MM-dd-yyyy}" }]'
                                      k-data-source="model.dataSource"
                                      k-on-data-bound="modelonDataBound(kendoEvent)"
                                      k-on-change="model.onChange(kendoEvent)">

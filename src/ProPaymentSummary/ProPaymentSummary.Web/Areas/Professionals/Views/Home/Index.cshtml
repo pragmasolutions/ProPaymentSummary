@@ -16,8 +16,12 @@
     <link rel="stylesheet" href="~/Areas/Professionals/assets/css/xenon-components.css">
     <link rel="stylesheet" href="~/Areas/Professionals/assets/css/xenon-skins.css">
 
-    @Styles.Render("~/Content/kendo")
+    <link rel="stylesheet" href="~/Content/kendo/kendo.common.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/kendo.default.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="~/Content/kendo/kendo.dataviz.default.min.css" />
 
+    
     <link rel="stylesheet" href="~/Areas/Professionals/assets/css/custom.css">
     <script src="~/Areas/Professionals/assets/js/jquery-1.11.1.min.js"></script>
     <script>
@@ -69,8 +73,8 @@
     <script src="~/Areas/Professionals/assets/js/joinable.js"></script>
     <script src="~/Areas/Professionals/assets/js/resizeable.js"></script>
 
-    @Scripts.Render("~/bundles/kendo")
-
+    @*@Scripts.Render("~/bundles/kendo")*@
+    <script src="~/Scripts/kendo/kendo.all.min.js"></script>
     <!-- App -->
     <script src="~/Areas/Professionals/app/js/app.js"></script>
     <script src="~/Areas/Professionals/app/js/controllers.js"></script>
@@ -84,5 +88,6 @@
 
     <!-- JavaScripts initializations and stuff -->
     <script src="~/Areas/Professionals/app/js/xenon-custom.js"></script>
+
 </body>
 </html>

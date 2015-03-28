@@ -13,7 +13,7 @@
                 healthInsuranceProviderName: { title: "Pre Paga", type: "string" },
                 patientName: { title: "Paciente", type: "string" },
                 PatientDNI: { title: "DNI Paciente", type: "string" },
-                attentionDate: { title: "Fecha Atención", type: "date" }
+                attentionDate: { title: "Fecha Atención", type: "date", format:"{0:MM-dd-yyyy}"  }
             }
         });
     });
