@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="~/Areas/Professionals/assets/css/xenon-forms.css">
     <link rel="stylesheet" href="~/Areas/Professionals/assets/css/xenon-components.css">
     <link rel="stylesheet" href="~/Areas/Professionals/assets/css/xenon-skins.css">
+
+    @Styles.Render("~/Content/kendo")
+
     <link rel="stylesheet" href="~/Areas/Professionals/assets/css/custom.css">
     <script src="~/Areas/Professionals/assets/js/jquery-1.11.1.min.js"></script>
     <script>
@@ -61,12 +64,17 @@
     <script src="~/Areas/Professionals/assets/js/joinable.js"></script>
     <script src="~/Areas/Professionals/assets/js/resizeable.js"></script>
 
+    @Scripts.Render("~/bundles/kendo")
+
     <!-- App -->
     <script src="~/Areas/Professionals/app/js/app.js"></script>
     <script src="~/Areas/Professionals/app/js/controllers.js"></script>
+    <script src="~/Areas/Professionals/app/js/controllers/order/orderController.js"></script>
     <script src="~/Areas/Professionals/app/js/directives.js"></script>
     <script src="~/Areas/Professionals/app/js/factory.js"></script>
     <script src="~/Areas/Professionals/app/js/services.js"></script>
+    <script src="~/Areas/Professionals/app/js/services/orderModel.js"></script>
+    <script src="~/Areas/Professionals/app/js/services/orderDataSource.js"></script>
 
     <!-- JavaScripts initializations and stuff -->
     <script src="~/Areas/Professionals/app/js/xenon-custom.js"></script>

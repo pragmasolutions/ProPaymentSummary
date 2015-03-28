@@ -24,6 +24,10 @@ namespace ProPaymentSummary.Web
                 .Include("~/Scripts/bootstrap.js",
                          "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                "~/Scripts/kendo/kendo.web.min.js",
+                "~/Scripts/kendo/kendo.angular.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/app")
                 .Include("~/Scripts/main.js"));
 
@@ -33,6 +37,10 @@ namespace ProPaymentSummary.Web
                 .Include("~/Content/css/prettyPhoto.css")
                 .Include("~/Content/css/Site.css")
                 .Include("~/Content/css/main.css"));
+
+             bundles.Add(new StyleBundle("~/Content/kendo").Include(
+                      "~/Content/kendo/kendo.common.min.css",
+                      "~/Content/kendo/kendo.bootstrap.min.css"));
         }
     }
 }

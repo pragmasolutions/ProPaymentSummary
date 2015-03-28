@@ -1,71 +1,57 @@
-<page-title ng-if="layoutOptions.pageTitles" title="Ordenes" description="Listado de ordenes"></page-title>
-<div class="row">
-    <div class="col-md-12">
+<div ng-controller="orderListController as model">
+    <page-title ng-if="layoutOptions.pageTitles" title="Ordenes" description="Listado de ordenes"></page-title>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Listado de Ordenes</h3>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Listado de Ordenes</h3>
+                    <div class="panel-options">
+                        <a href="">
+                            <i class="linecons-cog"></i>
+                        </a>
 
-                <div class="panel-options">
-                    <a href="">
-                        <i class="linecons-cog"></i>
-                    </a>
+                        <a href="" data-toggle="panel">
+                            <span class="collapse-icon">&ndash;</span>
+                            <span class="expand-icon">+</span>
+                        </a>
 
-                    <a href="" data-toggle="panel">
-                        <span class="collapse-icon">&ndash;</span>
-                        <span class="expand-icon">+</span>
-                    </a>
-
-                    <a href="" data-toggle="reload">
-                        <i class="fa-rotate-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="panel-body">
-
-                <div class="row">
-                    <div class="col-sm-12">
-
-                        <strong>Ordenes</strong>
-
-                        <table class="table responsive">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Arlind</td>
-                                    <td>Nushi</td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>Art</td>
-                                    <td>Ramadani</td>
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>Filan</td>
-                                    <td>Fisteku</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
+                        <a href="" data-toggle="reload">
+                            <i class="fa-rotate-right"></i>
+                        </a>
                     </div>
-                    
                 </div>
+                <div class="panel-body">
 
-                <div class="vspacer v3"></div>
+                    <div class="row">
+                        <div class="col-sm-12">
 
+                            <strong>Ordenes</strong>
+
+                            <div class="k-content" style="width: 100%">
+                                <div kendo-grid="grid"
+                                     k-sortable="true"
+                                     k-pageable="true"
+                                     k-filterable="true"
+                                     k-selectable="true"
+                                     k-columns='[{ field: "orderNamber", title: "Nro Orden"},
+                                             { field: "healthInsuranceProviderName", title: "Pre Paga" },
+                                             { field: "patientName", title: "Title" },
+                                             { field: "PatientDNI" },
+                                             { field: "attentionDate" }]'
+                                     k-data-source="model.dataSource"
+                                     k-on-data-bound="modelonDataBound(kendoEvent)"
+                                     k-on-change="model.onChange(kendoEvent)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vspacer v3"></div>
+
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </div>
