@@ -496,4 +496,5 @@ angular.module('xenon.controllers', []).
 	    $scope.CUIT = "20-32405064-8";
 	    $scope.DNI = "32405064";
 	    $scope.MN = "123456";
+	    $scope.ProfileImageUrl = '/Areas/Professionals/assets/images/user-4.png';
 	});

@@ -3,22 +3,9 @@
 	<page-title ng-if="layoutOptions.pageTitles" title="Profile" description="User profile and story timeline"></page-title>
 
 
-<script>
-    app.controller('UserProfileCtrl', function ($scope, $element) {
-        $scope.LastName = "Rossi Querin";
-        $scope.FirstName = "Juan Pablo";
-        $scope.Address = "Brasil 1060";
-        $scope.ProvinceId = "1";
-        $scope.City = "Corrientes";
-        $scope.Phone = "4433687";
-        $scope.CUIT = "20-32405064-8";
-        $scope.DNI = "32405064";
-        $scope.MN = "123456";
-    })
-</script>
 <section class="profile-env">
 	
-    <div class="row">
+    <div class="row" ng-app="bioweb" ng-controller="UserProfileCtrl">
 
         <div class="col-sm-3">
 
@@ -26,7 +13,7 @@
             <div class="user-info-sidebar">
 
                 <a href="" class="user-img">
-                    <img src="/Areas/Professionals/assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
+                    <img src="{{ ProfileImageUrl }}" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
                 </a>
 
                 <a href="" class="user-name">Cambiar Imagen</a>
@@ -37,11 +24,11 @@
 
         <div class="col-sm-9">
 
-            <div class="panel panel-default" ng-app="bioweb">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Informaci&oacute;n de Profesional</h3>
                 </div>
-                <div class="panel-body" ng-controller="UserProfileCtrl">
+                <div class="panel-body">
 
                     <form role="form" class="form-horizontal" role="form">
 
@@ -147,3 +134,4 @@
     </div>
 	
 </section>
+
