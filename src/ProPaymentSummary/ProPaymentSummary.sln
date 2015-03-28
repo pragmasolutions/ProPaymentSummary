@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{98A6C1
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ProPaymentSummary.Database", "ProPaymentSummary.Database\ProPaymentSummary.Database.sqlproj", "{4EF2A05E-7721-478A-92D8-D0239BD035A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{E50B52D4-EB8E-4C45-A02B-1E2597701D57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework.Ioc", "Framework.Ioc\Framework.Ioc.csproj", "{E798E2FC-63AF-439D-933C-5A93E018CFA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,8 +52,15 @@ Global
 		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4EF2A05E-7721-478A-92D8-D0239BD035A3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E798E2FC-63AF-439D-933C-5A93E018CFA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E798E2FC-63AF-439D-933C-5A93E018CFA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E798E2FC-63AF-439D-933C-5A93E018CFA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E798E2FC-63AF-439D-933C-5A93E018CFA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E798E2FC-63AF-439D-933C-5A93E018CFA4} = {E50B52D4-EB8E-4C45-A02B-1E2597701D57}
 	EndGlobalSection
 EndGlobal

@@ -271,7 +271,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProPaymentSummaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="BioquimicaEntities" annotation:LazyLoadingEnabled="true" >
+        <EntityContainer Name="ProPaymentSummaryEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="AspNetRoles" EntityType="ProPaymentSummaryModel.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="ProPaymentSummaryModel.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="ProPaymentSummaryModel.AspNetUserLogin" />
@@ -515,7 +515,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProPaymentSummaryModelStoreContainer" CdmEntityContainer="BioquimicaEntities" >
+        <EntityContainerMapping StorageEntityContainer="ProPaymentSummaryModelStoreContainer" CdmEntityContainer="ProPaymentSummaryEntities" >
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="ProPaymentSummaryModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">

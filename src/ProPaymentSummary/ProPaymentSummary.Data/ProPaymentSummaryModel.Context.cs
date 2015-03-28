@@ -13,10 +13,10 @@ namespace ProPaymentSummary.Entities
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BioquimicaEntities : DbContext
+    public partial class ProPaymentSummaryEntities : DbContext
     {
-        public BioquimicaEntities()
-            : base("name=BioquimicaEntities")
+        public ProPaymentSummaryEntities()
+            : base("name=ProPaymentSummaryEntities")
         {
         }
     

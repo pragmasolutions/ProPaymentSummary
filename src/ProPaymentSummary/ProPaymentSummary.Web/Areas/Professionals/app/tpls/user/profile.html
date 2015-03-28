@@ -3,34 +3,45 @@
 	<page-title ng-if="layoutOptions.pageTitles" title="Profile" description="User profile and story timeline"></page-title>
 
 
+<script>
+    app.controller('UserProfileCtrl', function ($scope, $element) {
+        $scope.LastName = "Rossi Querin";
+        $scope.FirstName = "Juan Pablo";
+        $scope.Address = "Brasil 1060";
+        $scope.ProvinceId = "1";
+        $scope.City = "Corrientes";
+        $scope.Phone = "4433687";
+        $scope.CUIT = "20-32405064-8";
+        $scope.DNI = "32405064";
+        $scope.MN = "123456";
+    })
+</script>
 <section class="profile-env">
 	
-	<div class="row">
-	
-		<div class="col-sm-3">
-			
-			<!-- User Info Sidebar -->
-			<div class="user-info-sidebar">
-				
-				<a href="" class="user-img">
+    <div class="row">
+
+        <div class="col-sm-3">
+
+            <!-- User Info Sidebar -->
+            <div class="user-info-sidebar">
+
+                <a href="" class="user-img">
                     <img src="/Areas/Professionals/assets/images/user-4.png" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
-				</a>
-				
-				<a href="" class="user-name">Cambiar Imagen<a>
-				
-					
-				<hr />
-			</div>
-			
-		</div>
-		
-		<div class="col-sm-9">
-			
-            <div class="panel panel-default">
+                </a>
+
+                <a href="" class="user-name">Cambiar Imagen</a>
+                <hr />
+            </div>
+
+        </div>
+
+        <div class="col-sm-9">
+
+            <div class="panel panel-default" ng-app="bioweb">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Default form inputs</h3>
+                    <h3 class="panel-title">Informaci&oacute;n de Profesional</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" ng-controller="UserProfileCtrl">
 
                     <form role="form" class="form-horizontal" role="form">
 
@@ -38,7 +49,7 @@
                             <label class="col-sm-2 control-label" for="LastName">Apellido</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="LastName" disabled>
+                                <input type="text" class="form-control" id="LastName" disabled ng-model="LastName">
                             </div>
                         </div>
 
@@ -48,7 +59,7 @@
                             <label class="col-sm-2 control-label" for="FirstName">Nombre</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="FirstName" disabled>
+                                <input type="text" class="form-control" id="FirstName" disabled ng-model="FirstName">
                             </div>
                         </div>
 
@@ -58,7 +69,7 @@
                             <label class="col-sm-2 control-label" for="Address">Direcci&oacute;n</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="Address" disabled>
+                                <input type="text" class="form-control" id="Address" disabled ng-model="Address">
                             </div>
                         </div>
 
@@ -68,7 +79,7 @@
                             <label class="col-sm-2 control-label" for="Province">Provincia</label>
 
                             <div class="col-sm-10">
-                                <select class="form-control" id="Province" disabled placeholder="Seleccione una Provincia">
+                                <select class="form-control" id="Province" disabled ng-model="ProvinceId">
                                     <option>Option 1</option>
                                     <option>Option 2</option>
                                     <option>Option 3</option>
@@ -84,7 +95,7 @@
                             <label class="col-sm-2 control-label" for="City">Ciudad</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="City" disabled>
+                                <input type="text" class="form-control" id="City" disabled ng-model="City">
                             </div>
                         </div>
 
@@ -94,17 +105,17 @@
                             <label class="col-sm-2 control-label" for="Phone">Tel&eacute;fono</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="Phone" disabled>
+                                <input type="text" class="form-control" id="Phone" disabled ng-model="Phone">
                             </div>
                         </div>
-                        
+
                         <div class="form-group-separator"></div>
-                        
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="CUIT">CUIT</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="CUIT" inputmask data-mask="99-99999999-9" disabled>
+                                <input type="text" class="form-control" id="CUIT" inputmask data-mask="99-99999999-9" disabled ng-model="CUIT">
                             </div>
                         </div>
 
@@ -114,7 +125,7 @@
                             <label class="col-sm-2 control-label" for="DNI">DNI</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="DNI" disabled>
+                                <input type="text" class="form-control" id="DNI" disabled ng-model="DNI">
                             </div>
                         </div>
 
@@ -124,192 +135,15 @@
                             <label class="col-sm-2 control-label" for="MN">Nº Matr&iacute;cula</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="MN" disabled>
+                                <input type="text" class="form-control" id="MN" disabled ng-model="MN">
                             </div>
                         </div>
-
-                        <div class="form-group-separator"></div>
-
-                        <div class="form-group has-error">
-                            <label class="col-sm-2 control-label" for="field-6">Error field</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="field-6" placeholder="Hello I am an error">
-                            </div>
-                        </div>
-
-                        <div class="form-group-separator"></div>
-
-                        <div class="form-group has-warning">
-                            <label class="col-sm-2 control-label" for="field-7">Warning field</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="field-7" placeholder="Hello I am a warning">
-                            </div>
-                        </div>
-
-                        <div class="form-group-separator"></div>
-
-                        <div class="form-group has-success">
-                            <label class="col-sm-2 control-label" for="field-8">Success field</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="field-8" placeholder="Hello I am a success message">
-                            </div>
-                        </div>
-
-                        <div class="form-group-separator"></div>
-
-                        <div class="form-group has-info">
-                            <label class="col-sm-2 control-label" for="field-9">Info field</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="field-9" placeholder="Hello I am an info message">
-                            </div>
-                        </div>
-
-                        <div class="form-group-separator"></div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="field-11">Input size</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control input-sm" id="field-13" placeholder=".input-sm">
-                                <br />
-                                <input type="text" class="form-control" id="field-14" placeholder="Normal input">
-                                <br />
-                                <input type="text" class="form-control input-lg" id="field-15" placeholder=".input-lg">
-                            </div>
-                        </div>
-
-                        <div class="form-group-separator"></div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="field-11">Input text position</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control text-center" id="field-11" placeholder="Placeholder">
-                                <br />
-                                <input type="text" class="form-control text-right" id="field-12" placeholder="Placeholder">
-                            </div>
-                        </div>
-
-                        <div class="form-group-separator"></div>
-
-                        
-
-                        <div class="form-group-separator"></div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Checkboxes</label>
-
-                            <div class="col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox">
-                                        Default checkbox
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox">
-                                        Another one
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" disabled>
-                                        Disabled option
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" checked disabled>
-                                        Checked and disabled option
-                                    </label>
-                                </div>
-
-                                <br />
-                                <strong>Inline checkboxes</strong>
-
-                                <p>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox">
-                                        Inline checkbox 1
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox">
-                                        Inline checkbox 2
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox">
-                                        Inline checkbox 3
-                                    </label>
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group-separator"></div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Radio buttons</label>
-
-                            <div class="col-sm-10">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="radio-1" checked>
-                                        Default radio
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="radio-1">
-                                        Another one
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" disabled>
-                                        Disabled option
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" checked disabled>
-                                        Checked and disabled option
-                                    </label>
-                                </div>
-
-                                <br />
-                                <strong>Inline radio buttons</strong>
-
-                                <p>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="radio-2" checked>
-                                        Inline radio button 1
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="radio-2">
-                                        Inline radio button 2
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="radio-2">
-                                        Inline radio button 3
-                                    </label>
-                                </p>
-
-                            </div>
-                        </div>
-
-
                     </form>
-
                 </div>
             </div>
-			
-		</div>
-		
-	</div>
+
+        </div>
+
+    </div>
 	
 </section>
