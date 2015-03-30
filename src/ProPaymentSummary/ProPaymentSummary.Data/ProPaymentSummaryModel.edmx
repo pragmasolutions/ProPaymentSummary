@@ -99,7 +99,7 @@
           <Key>
             <PropertyRef Name="ProfessionalId" />
           </Key>
-          <Property Name="ProfessionalId" Type="nvarchar" MaxLength="128" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="ProfessionalId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
@@ -110,6 +110,7 @@
           <Property Name="MN" Type="varchar" MaxLength="50" />
           <Property Name="ProvinceId" Type="int" />
           <Property Name="City" Type="varchar" MaxLength="200" />
+          <Property Name="ProfileImage" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Province">
           <Key>
@@ -310,7 +311,12 @@
             <End Role="Province" EntitySet="Provinces" />
             <End Role="Professional" EntitySet="Professionals" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="ProfessionalImages" EntityType="ProPaymentSummaryModel.ProfessionalImage" />
+          <AssociationSet Name="ProfessionalProfessionalImage" Association="ProPaymentSummaryModel.ProfessionalProfessionalImage">
+            <End Role="Professional" EntitySet="Professionals" />
+            <End Role="ProfessionalImage" EntitySet="ProfessionalImages" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -409,7 +415,7 @@
           <Key>
             <PropertyRef Name="ProfessionalId" />
           </Key>
-          <Property Name="ProfessionalId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ProfessionalId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="128" Unicode="true" FixedLength="false" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -421,6 +427,7 @@
           <Property Name="ProvinceId" Type="Int32" />
           <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Province" Relationship="ProPaymentSummaryModel.FK_Professional_Province" FromRole="Professional" ToRole="Province" />
+          <NavigationProperty Name="ProfessionalImage" Relationship="ProPaymentSummaryModel.ProfessionalProfessionalImage" FromRole="Professional" ToRole="ProfessionalImage" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="ProPaymentSummaryModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -507,6 +514,26 @@
             </Principal>
             <Dependent Role="Professional">
               <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProfessionalImage">
+          <Key>
+            <PropertyRef Name="ProfessionalId" />
+          </Key>
+          <Property Name="ProfessionalId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="ProfileImage" Type="Binary" Nullable="false" />
+          <NavigationProperty Name="Professional" Relationship="ProPaymentSummaryModel.ProfessionalProfessionalImage" FromRole="ProfessionalImage" ToRole="Professional" />
+        </EntityType>
+        <Association Name="ProfessionalProfessionalImage">
+          <End Type="ProPaymentSummaryModel.Professional" Role="Professional" Multiplicity="1" />
+          <End Type="ProPaymentSummaryModel.ProfessionalImage" Role="ProfessionalImage" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Professional">
+              <PropertyRef Name="ProfessionalId" />
+            </Principal>
+            <Dependent Role="ProfessionalImage">
+              <PropertyRef Name="ProfessionalId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -605,19 +632,19 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Professionals">
-            <EntityTypeMapping TypeName="ProPaymentSummaryModel.Professional">
+            <EntityTypeMapping TypeName="IsTypeOf(ProPaymentSummaryModel.Professional)">
               <MappingFragment StoreEntitySet="Professional">
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
-                <ScalarProperty Name="MN" ColumnName="MN" />
-                <ScalarProperty Name="MP" ColumnName="MP" />
-                <ScalarProperty Name="DNI" ColumnName="DNI" />
-                <ScalarProperty Name="CUIT" ColumnName="CUIT" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CUIT" ColumnName="CUIT" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="MP" ColumnName="MP" />
+                <ScalarProperty Name="MN" ColumnName="MN" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="City" ColumnName="City" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -637,7 +664,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="ProfessionalImages">
+            <EntityTypeMapping TypeName="IsTypeOf(ProPaymentSummaryModel.ProfessionalImage)">
+              <MappingFragment StoreEntitySet="Professional">
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

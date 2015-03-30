@@ -16,7 +16,12 @@
                     <img src="{{ ProfileImageUrl }}" alt="user-img" class="img-cirlce img-responsive img-thumbnail" />
                 </a>
 
-                <a href="" class="user-name">Cambiar Imagen</a>
+
+                <div id="file-container" style="display:none;">
+                    <input name="files" id="files" type="file" value="Hacer cosas" accept=".jpg,.png,.gif" />
+                </div>
+                <a href="" class="user-name" id="lnkCambiarImagen">Cambiar Imagen</a>
+                
                 <hr />
             </div>
 
@@ -132,6 +137,111 @@
         </div>
 
     </div>
+
+    <!--CROPPER-->
+    <div id="window" style="display: none;">
+        <strong class="text-primary">Recortar Imagen</strong>
+        <br />
+        <br />
+
+        <div class="img-container">
+            
+        </div>
+
+        <br />
+        <br />
+
+        <a id="crop-img" href="#" class="btn btn-secondary">Aceptar</a>
+    </div>
 	
 </section>
 
+<script>
+    $(function () {
+        $('#lnkCambiarImagen').click(function () {
+            $("#files").click();
+        });
+
+
+        $("#files").kendoUpload({
+            async: {
+                saveUrl: "/Professionals/Image/Save",
+                //removeUrl: "remove",
+                autoUpload: true
+            },
+            localization: {
+                select: "Seleccionar desde PC",
+                headerStatusUploaded: "Finalizado",
+                headerStatusUploading: "Cargando.."
+            },
+            multiple: false,
+            showFileList: false,
+            success: function (e) {
+                $('.img-container').empty();
+                var img = $('<img class="img-responsive">');
+                $(img).bind('load', imageLoad)
+                $(img).attr('src', '/Temp/' + appHelper.getCurrentId() + e.files[0].extension)
+                $('.img-container').append(img);
+            }
+        });
+
+        var imageLoad = function () {
+            window.data("kendoWindow").open().center();
+            var preview_size = [220, 145],
+                aspect_ratio = preview_size[0] / preview_size[1],
+                selection = {
+                    x: null,
+                    y: null,
+                    w: null,
+                    h: null
+                },
+                $image = $(".img-container img");
+
+            // Plugin Initialization
+            $image.cropper({
+                aspectRatio: aspect_ratio,
+                done: function (data) {
+                    selection.x = data.x;
+                    selection.y = data.y;
+                    selection.w = data.width;
+                    selection.h = data.height;
+                }
+            });
+        }
+
+
+
+
+        //$("#dialog").kendoWindow();
+        //var dialog = $("#dialog").data("kendoWindow");
+        //dialog.center();
+
+        var window = $("#window"),
+                        undo = $("#undo")
+                                .bind("click", function () {
+                                    window.data("kendoWindow").open().center();
+                                });
+
+        var onClose = function () {
+
+        }
+
+        if (!window.data("kendoWindow")) {
+            window.kendoWindow({
+                width: "400px",
+                title: "Cambiar imagen de perfil",
+                actions: [
+                   "Close"
+                ],
+                close: onClose
+            });
+        }
+
+
+
+        //$("#crop-img").on('click', function (ev) {
+        //    ev.preventDefault();
+        //    window.open($(this).attr('href') + "?x=" + selection.x + "&y=" + selection.y + "&w=" + selection.w + "&h=" + selection.h + "&tw=" + preview_size[0] + "&th=" + preview_size[1]);
+        //});
+    });
+</script>

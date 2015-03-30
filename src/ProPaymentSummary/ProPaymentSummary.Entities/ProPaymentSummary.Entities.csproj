@@ -66,6 +66,9 @@
     <Compile Include="Professional.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProfessionalImage.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProPaymentSummaryModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

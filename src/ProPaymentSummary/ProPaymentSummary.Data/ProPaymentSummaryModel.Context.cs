@@ -35,5 +35,6 @@ namespace ProPaymentSummary.Entities
         public virtual DbSet<PracticeOrder> PracticeOrders { get; set; }
         public virtual DbSet<Professional> Professionals { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
+        public virtual DbSet<ProfessionalImage> ProfessionalImages { get; set; }
     }
 }

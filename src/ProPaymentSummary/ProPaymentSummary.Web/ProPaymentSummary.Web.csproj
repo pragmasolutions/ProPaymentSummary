@@ -206,6 +206,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Api\OrdersController.cs" />
     <Compile Include="Areas\Professionals\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Professionals\Controllers\ImageController.cs" />
     <Compile Include="Areas\Professionals\ProfessionalsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2793,6 +2794,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Professionals\Models\" />
+    <Folder Include="Areas\Professionals\Views\Image\" />
     <Folder Include="Areas\Professionals\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

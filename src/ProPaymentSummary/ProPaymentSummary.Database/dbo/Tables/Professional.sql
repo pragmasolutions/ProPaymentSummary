@@ -10,6 +10,7 @@
     [MN]             VARCHAR (50)  NULL,
     [ProvinceId]       INT  NULL,
     [City]			 VARCHAR(200)  NULL, 
+    [ProfileImage] VARBINARY(MAX) NULL, 
     CONSTRAINT [PK_Professional] PRIMARY KEY CLUSTERED ([ProfessionalId] ASC), 
     CONSTRAINT [FK_Professional_Province] FOREIGN KEY ([ProvinceId]) REFERENCES [Province]([ProvinceId])
 );

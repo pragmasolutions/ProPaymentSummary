@@ -543,8 +543,8 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			templateUrl: appHelper.templatePath('extra/image-cropper'),
 			resolve: {
 				resources: function($ocLazyLoad){
-					return $ocLazyLoad.load([
-						ASSETS.extra.cropper,
+				    return $ocLazyLoad.load([
+                        ASSETS.extra.cropper,
 					]);
 				},
 			}
@@ -837,6 +837,8 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
                     return $ocLazyLoad.load([
 						ASSETS.core.googleMapsLoader,
 						ASSETS.icons.elusive,
+                        ASSETS.extra.cropper,
+                        ASSETS.forms.inputmask
                     ]);
                 },
             }

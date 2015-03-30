@@ -12,21 +12,11 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Professional
+    public partial class ProfessionalImage
     {
         public string ProfessionalId { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string CUIT { get; set; }
-        public int DNI { get; set; }
-        public string MP { get; set; }
-        public string MN { get; set; }
-        public Nullable<int> ProvinceId { get; set; }
-        public string City { get; set; }
+        public byte[] ProfileImage { get; set; }
     
-        public virtual Province Province { get; set; }
-        public virtual ProfessionalImage ProfessionalImage { get; set; }
+        public virtual Professional Professional { get; set; }
     }
 }
