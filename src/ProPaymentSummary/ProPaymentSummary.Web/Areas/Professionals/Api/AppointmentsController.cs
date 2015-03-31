@@ -13,11 +13,25 @@ using System.Web.Http.OData.Routing;
 using ProPaymentSummary.Service.Dto;
 using Microsoft.Data.OData;
 using ProPaymentSummary.Service.Data;
+using ProPaymentSummary.Service.Interfaces;
+using ProPaymentSummary.Service;
 
 namespace ProPaymentSummary.Web.Areas.Professionals.Api
 {
     public class AppointmentsController : ODataController
     {
+        private readonly IAppointmentService _appointmentServce;
+
+        public AppointmentsController(IAppointmentService appointmentServce)
+        {
+            _appointmentServce = appointmentServce;
+        }
+
+        public AppointmentsController()
+            : this(new AppointmentService())
+        {
+        }
+
         private static ODataValidationSettings _validationSettings = new ODataValidationSettings();
 
         // GET: odata/Appointments
