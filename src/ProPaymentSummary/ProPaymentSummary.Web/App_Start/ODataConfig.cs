@@ -12,6 +12,7 @@ namespace ProPaymentSummary.Web
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             builder.EnableLowerCamelCase();
             builder.EntitySet<OrderDto>("orders");
+            builder.EntitySet<OrderDto>("appointments");
             config.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
         }
     }

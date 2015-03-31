@@ -205,6 +205,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Api\OrdersController.cs" />
+    <Compile Include="Areas\Professionals\Api\AppointmentsController.cs" />
+    <Compile Include="Areas\Professionals\Controllers\AppointmentsController.cs" />
     <Compile Include="Areas\Professionals\Controllers\HomeController.cs" />
     <Compile Include="Areas\Professionals\Controllers\ImageController.cs" />
     <Compile Include="Areas\Professionals\ProfessionalsAreaRegistration.cs" />
@@ -993,8 +995,8 @@
     <Content Include="Areas\Professionals\app\js\oc-lazyload\ocLazyLoad.js" />
     <Content Include="Areas\Professionals\app\js\oc-lazyload\ocLazyLoad.min.js" />
     <Content Include="Areas\Professionals\app\js\services.js" />
-    <Content Include="Areas\Professionals\app\js\services\orderDataSource.js" />
-    <Content Include="Areas\Professionals\app\js\services\orderModel.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\order\orderDataSource.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\order\orderModel.js" />
     <Content Include="Areas\Professionals\app\js\widgets.js" />
     <Content Include="Areas\Professionals\app\js\xenon-custom.js" />
     <Content Include="Areas\Professionals\app\tpls\charts\bar-gauges.html" />
@@ -2430,6 +2432,7 @@
     <Content Include="Content\kendo\Uniform\sprite_2x.png" />
     <Content Include="Content\kendo\Uniform\sprite_kpi.png" />
     <Content Include="Content\kendo\Uniform\sprite_kpi_2x.png" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -2735,6 +2738,12 @@
     <Content Include="Content\kendo\fonts\DejaVu\LICENSE" />
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
+    <Content Include="Areas\Professionals\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Professionals\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Professionals\Views\Appointments\List.cshtml" />
+    <Content Include="Areas\Professionals\Views\Appointments\Create.cshtml" />
+    <Content Include="Areas\Professionals\Views\Appointments\Edit.cshtml" />
+    <Content Include="Areas\Professionals\Views\Appointments\Delete.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2795,7 +2804,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Professionals\Models\" />
     <Folder Include="Areas\Professionals\Views\Image\" />
-    <Folder Include="Areas\Professionals\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />

@@ -15,9 +15,6 @@ namespace ProPaymentSummary.Data
             RepositoryProvider = repositoryProvider;
         }
 
-               
-        
-
         // Repositories
         public IRepository<AspNetRole> AspNetRoles { get { return GetStandardRepo<AspNetRole>(); } }
         public IRepository<AspNetUser> AspNetUsers { get { return GetStandardRepo<AspNetUser>(); } }
