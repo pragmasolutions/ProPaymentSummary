@@ -16,7 +16,7 @@ namespace ProPaymentSummary.Entities
     {
         public HealthInsuranceProvider()
         {
-            this.Orders = new HashSet<Order>();
+            this.Appointments = new HashSet<Appointment>();
         }
     
         public int HealthInsuranceProviderId { get; set; }
@@ -24,6 +24,6 @@ namespace ProPaymentSummary.Entities
         public string Address { get; set; }
         public decimal NBU { get; set; }
     
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

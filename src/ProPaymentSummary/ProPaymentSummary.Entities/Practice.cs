@@ -16,7 +16,7 @@ namespace ProPaymentSummary.Entities
     {
         public Practice()
         {
-            this.PracticeOrders = new HashSet<PracticeOrder>();
+            this.PracticeAppointments = new HashSet<PracticeAppointment>();
         }
     
         public int PracticeId { get; set; }
@@ -25,6 +25,6 @@ namespace ProPaymentSummary.Entities
         public string Nomenclator { get; set; }
         public decimal UB { get; set; }
     
-        public virtual ICollection<PracticeOrder> PracticeOrders { get; set; }
+        public virtual ICollection<PracticeAppointment> PracticeAppointments { get; set; }
     }
 }

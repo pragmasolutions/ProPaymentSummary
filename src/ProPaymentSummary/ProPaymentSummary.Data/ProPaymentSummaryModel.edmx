@@ -5,56 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ProPaymentSummaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AspNetRoles">
+        <EntityType Name="Appointment">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="AppointmentId" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaims">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ClaimType" Type="nvarchar(max)" />
-          <Property Name="ClaimValue" Type="nvarchar(max)" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogins">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUserRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUsers">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="256" />
-          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
-          <Property Name="PasswordHash" Type="nvarchar(max)" />
-          <Property Name="SecurityStamp" Type="nvarchar(max)" />
-          <Property Name="PhoneNumber" Type="nvarchar(max)" />
-          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="datetime" />
-          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="AppointmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HealthInsuranceProviderId" Type="int" Nullable="false" />
+          <Property Name="OrderNumber" Type="int" Nullable="false" />
+          <Property Name="PatientName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="AttentionDate" Type="date" Nullable="false" />
+          <Property Name="PatientId" Type="int" />
         </EntityType>
         <EntityType Name="HealthInsuranceProvider">
           <Key>
@@ -65,17 +25,16 @@
           <Property Name="Address" Type="varchar" MaxLength="250" />
           <Property Name="NBU" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <EntityType Name="Order">
+        <EntityType Name="Patient">
           <Key>
-            <PropertyRef Name="OrderId" />
+            <PropertyRef Name="PatientId" />
           </Key>
-          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HealthInsuranceProviderId" Type="int" Nullable="false" />
-          <Property Name="OrderNumber" Type="int" Nullable="false" />
-          <Property Name="PatientName" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="AttentionDate" Type="date" Nullable="false" />
-          <Property Name="PatientDNI" Type="int" />
-          <Property Name="PatientBirthDate" Type="date" />
+          <Property Name="PatientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="DNI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="250" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Practice">
           <Key>
@@ -87,13 +46,13 @@
           <Property Name="Nomenclator" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UB" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <EntityType Name="PracticeOrder">
+        <EntityType Name="PracticeAppointment">
           <Key>
-            <PropertyRef Name="PracticeOrderId" />
+            <PropertyRef Name="PracticeAppointmentId" />
           </Key>
-          <Property Name="PracticeOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PracticeAppointmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PracticeId" Type="int" Nullable="false" />
-          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="AppointmentId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Professional">
           <Key>
@@ -119,94 +78,50 @@
           <Property Name="ProvinceId" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaims">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogins">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetRoles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserRoles">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserRoles">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_HealthInsuranceProvider">
+        <Association Name="FK_Appointment_HealthInsuranceProvider">
           <End Role="HealthInsuranceProvider" Type="Self.HealthInsuranceProvider" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HealthInsuranceProvider">
               <PropertyRef Name="HealthInsuranceProviderId" />
             </Principal>
-            <Dependent Role="Order">
+            <Dependent Role="Appointment">
               <PropertyRef Name="HealthInsuranceProviderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PracticeOrder_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="PracticeOrder" Type="Self.PracticeOrder" Multiplicity="*" />
+        <Association Name="FK_Appointment_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="OrderId" />
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
             </Principal>
-            <Dependent Role="PracticeOrder">
-              <PropertyRef Name="OrderId" />
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PatientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PracticeOrder_Practice">
+        <Association Name="FK_PracticeAppointment_Appointment">
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="1" />
+          <End Role="PracticeAppointment" Type="Self.PracticeAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="AppointmentId" />
+            </Principal>
+            <Dependent Role="PracticeAppointment">
+              <PropertyRef Name="AppointmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticeAppointment_Practice">
           <End Role="Practice" Type="Self.Practice" Multiplicity="1" />
-          <End Role="PracticeOrder" Type="Self.PracticeOrder" Multiplicity="*" />
+          <End Role="PracticeAppointment" Type="Self.PracticeAppointment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Practice">
               <PropertyRef Name="PracticeId" />
             </Principal>
-            <Dependent Role="PracticeOrder">
+            <Dependent Role="PracticeAppointment">
               <PropertyRef Name="PracticeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -224,44 +139,28 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ProPaymentSummaryModelStoreContainer">
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HealthInsuranceProvider" EntityType="Self.HealthInsuranceProvider" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Practice" EntityType="Self.Practice" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PracticeOrder" EntityType="Self.PracticeOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracticeAppointment" EntityType="Self.PracticeAppointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Professional" EntityType="Self.Professional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_HealthInsuranceProvider" Association="Self.FK_Order_HealthInsuranceProvider">
+          <AssociationSet Name="FK_Appointment_HealthInsuranceProvider" Association="Self.FK_Appointment_HealthInsuranceProvider">
             <End Role="HealthInsuranceProvider" EntitySet="HealthInsuranceProvider" />
-            <End Role="Order" EntitySet="Order" />
+            <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
-          <AssociationSet Name="FK_PracticeOrder_Order" Association="Self.FK_PracticeOrder_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="PracticeOrder" EntitySet="PracticeOrder" />
+          <AssociationSet Name="FK_Appointment_Patient" Association="Self.FK_Appointment_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
-          <AssociationSet Name="FK_PracticeOrder_Practice" Association="Self.FK_PracticeOrder_Practice">
+          <AssociationSet Name="FK_PracticeAppointment_Appointment" Association="Self.FK_PracticeAppointment_Appointment">
+            <End Role="Appointment" EntitySet="Appointment" />
+            <End Role="PracticeAppointment" EntitySet="PracticeAppointment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticeAppointment_Practice" Association="Self.FK_PracticeAppointment_Practice">
             <End Role="Practice" EntitySet="Practice" />
-            <End Role="PracticeOrder" EntitySet="PracticeOrder" />
+            <End Role="PracticeAppointment" EntitySet="PracticeAppointment" />
           </AssociationSet>
           <AssociationSet Name="FK_Professional_Province" Association="Self.FK_Professional_Province">
             <End Role="Province" EntitySet="Province" />
@@ -273,39 +172,9 @@
     <edmx:ConceptualModels>
       <Schema Namespace="ProPaymentSummaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ProPaymentSummaryEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="AspNetRoles" EntityType="ProPaymentSummaryModel.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="ProPaymentSummaryModel.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="ProPaymentSummaryModel.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="ProPaymentSummaryModel.AspNetUser" />
           <EntitySet Name="HealthInsuranceProviders" EntityType="ProPaymentSummaryModel.HealthInsuranceProvider" />
-          <EntitySet Name="Orders" EntityType="ProPaymentSummaryModel.Order" />
           <EntitySet Name="Practices" EntityType="ProPaymentSummaryModel.Practice" />
-          <EntitySet Name="PracticeOrders" EntityType="ProPaymentSummaryModel.PracticeOrder" />
           <EntitySet Name="Professionals" EntityType="ProPaymentSummaryModel.Professional" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ProPaymentSummaryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="ProPaymentSummaryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_HealthInsuranceProvider" Association="ProPaymentSummaryModel.FK_Order_HealthInsuranceProvider">
-            <End Role="HealthInsuranceProvider" EntitySet="HealthInsuranceProviders" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PracticeOrder_Order" Association="ProPaymentSummaryModel.FK_PracticeOrder_Order">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="PracticeOrder" EntitySet="PracticeOrders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PracticeOrder_Practice" Association="ProPaymentSummaryModel.FK_PracticeOrder_Practice">
-            <End Role="Practice" EntitySet="Practices" />
-            <End Role="PracticeOrder" EntitySet="PracticeOrders" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="ProPaymentSummaryModel.AspNetUserRoles">
-            <End Role="AspNetRole" EntitySet="AspNetRoles" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
           <EntitySet Name="Provinces" EntityType="ProPaymentSummaryModel.Province" />
           <AssociationSet Name="FK_Professional_Province" Association="ProPaymentSummaryModel.FK_Professional_Province">
             <End Role="Province" EntitySet="Provinces" />
@@ -316,56 +185,26 @@
             <End Role="Professional" EntitySet="Professionals" />
             <End Role="ProfessionalImage" EntitySet="ProfessionalImages" />
           </AssociationSet>
+          <EntitySet Name="Appointments" EntityType="ProPaymentSummaryModel.Appointment" />
+          <EntitySet Name="Patients" EntityType="ProPaymentSummaryModel.Patient" />
+          <EntitySet Name="PracticeAppointments" EntityType="ProPaymentSummaryModel.PracticeAppointment" />
+          <AssociationSet Name="FK_Appointment_HealthInsuranceProvider" Association="ProPaymentSummaryModel.FK_Appointment_HealthInsuranceProvider">
+            <End Role="HealthInsuranceProvider" EntitySet="HealthInsuranceProviders" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Appointment_Patient" Association="ProPaymentSummaryModel.FK_Appointment_Patient">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Appointment" EntitySet="Appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticeAppointment_Appointment" Association="ProPaymentSummaryModel.FK_PracticeAppointment_Appointment">
+            <End Role="Appointment" EntitySet="Appointments" />
+            <End Role="PracticeAppointment" EntitySet="PracticeAppointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PracticeAppointment_Practice" Association="ProPaymentSummaryModel.FK_PracticeAppointment_Practice">
+            <End Role="Practice" EntitySet="Practices" />
+            <End Role="PracticeAppointment" EntitySet="PracticeAppointments" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="AspNetRole">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="ProPaymentSummaryModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUserClaim">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="ProPaymentSummaryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUserLogin">
-          <Key>
-            <PropertyRef Name="LoginProvider" />
-            <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="ProPaymentSummaryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="ProPaymentSummaryModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="ProPaymentSummaryModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-          <NavigationProperty Name="AspNetRoles" Relationship="ProPaymentSummaryModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
-        </EntityType>
         <EntityType Name="HealthInsuranceProvider">
           <Key>
             <PropertyRef Name="HealthInsuranceProviderId" />
@@ -374,21 +213,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="NBU" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <NavigationProperty Name="Orders" Relationship="ProPaymentSummaryModel.FK_Order_HealthInsuranceProvider" FromRole="HealthInsuranceProvider" ToRole="Order" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="OrderId" />
-          </Key>
-          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HealthInsuranceProviderId" Type="Int32" Nullable="false" />
-          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
-          <Property Name="PatientName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="AttentionDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="PatientDNI" Type="Int32" />
-          <Property Name="PatientBirthDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="HealthInsuranceProvider" Relationship="ProPaymentSummaryModel.FK_Order_HealthInsuranceProvider" FromRole="Order" ToRole="HealthInsuranceProvider" />
-          <NavigationProperty Name="PracticeOrders" Relationship="ProPaymentSummaryModel.FK_PracticeOrder_Order" FromRole="Order" ToRole="PracticeOrder" />
+          <NavigationProperty Name="Appointments" Relationship="ProPaymentSummaryModel.FK_Appointment_HealthInsuranceProvider" FromRole="HealthInsuranceProvider" ToRole="Appointment" />
         </EntityType>
         <EntityType Name="Practice">
           <Key>
@@ -399,17 +224,7 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Nomenclator" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UB" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <NavigationProperty Name="PracticeOrders" Relationship="ProPaymentSummaryModel.FK_PracticeOrder_Practice" FromRole="Practice" ToRole="PracticeOrder" />
-        </EntityType>
-        <EntityType Name="PracticeOrder">
-          <Key>
-            <PropertyRef Name="PracticeOrderId" />
-          </Key>
-          <Property Name="PracticeOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PracticeId" Type="Int32" Nullable="false" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="ProPaymentSummaryModel.FK_PracticeOrder_Order" FromRole="PracticeOrder" ToRole="Order" />
-          <NavigationProperty Name="Practice" Relationship="ProPaymentSummaryModel.FK_PracticeOrder_Practice" FromRole="PracticeOrder" ToRole="Practice" />
+          <NavigationProperty Name="PracticeAppointments" Relationship="ProPaymentSummaryModel.FK_PracticeAppointment_Practice" FromRole="Practice" ToRole="PracticeAppointment" />
         </EntityType>
         <EntityType Name="Professional">
           <Key>
@@ -429,74 +244,6 @@
           <NavigationProperty Name="Province" Relationship="ProPaymentSummaryModel.FK_Professional_Province" FromRole="Professional" ToRole="Province" />
           <NavigationProperty Name="ProfessionalImage" Relationship="ProPaymentSummaryModel.ProfessionalProfessionalImage" FromRole="Professional" ToRole="ProfessionalImage" />
         </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="ProPaymentSummaryModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ProPaymentSummaryModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="ProPaymentSummaryModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="ProPaymentSummaryModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogin">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_HealthInsuranceProvider">
-          <End Type="ProPaymentSummaryModel.HealthInsuranceProvider" Role="HealthInsuranceProvider" Multiplicity="1" />
-          <End Type="ProPaymentSummaryModel.Order" Role="Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HealthInsuranceProvider">
-              <PropertyRef Name="HealthInsuranceProviderId" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="HealthInsuranceProviderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PracticeOrder_Order">
-          <End Type="ProPaymentSummaryModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="ProPaymentSummaryModel.PracticeOrder" Role="PracticeOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="PracticeOrder">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PracticeOrder_Practice">
-          <End Type="ProPaymentSummaryModel.Practice" Role="Practice" Multiplicity="1" />
-          <End Type="ProPaymentSummaryModel.PracticeOrder" Role="PracticeOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Practice">
-              <PropertyRef Name="PracticeId" />
-            </Principal>
-            <Dependent Role="PracticeOrder">
-              <PropertyRef Name="PracticeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="ProPaymentSummaryModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="ProPaymentSummaryModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-        </Association>
         <EntityType Name="Province">
           <Key>
             <PropertyRef Name="ProvinceId" />
@@ -521,8 +268,8 @@
           <Key>
             <PropertyRef Name="ProfessionalId" />
           </Key>
-          <Property Name="ProfessionalId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Name="ProfileImage" Type="Binary" Nullable="false" />
+          <Property Name="ProfessionalId" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ProfileImage" Type="Binary" FixedLength="false" MaxLength="Max" />
           <NavigationProperty Name="Professional" Relationship="ProPaymentSummaryModel.ProfessionalProfessionalImage" FromRole="ProfessionalImage" ToRole="Professional" />
         </EntityType>
         <Association Name="ProfessionalProfessionalImage">
@@ -537,57 +284,96 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentId" />
+          </Key>
+          <Property Name="AppointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HealthInsuranceProviderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderNumber" Type="Int32" Nullable="false" />
+          <Property Name="PatientName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="AttentionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PatientId" Type="Int32" />
+          <NavigationProperty Name="HealthInsuranceProvider" Relationship="ProPaymentSummaryModel.FK_Appointment_HealthInsuranceProvider" FromRole="Appointment" ToRole="HealthInsuranceProvider" />
+          <NavigationProperty Name="Patient" Relationship="ProPaymentSummaryModel.FK_Appointment_Patient" FromRole="Appointment" ToRole="Patient" />
+          <NavigationProperty Name="PracticeAppointments" Relationship="ProPaymentSummaryModel.FK_PracticeAppointment_Appointment" FromRole="Appointment" ToRole="PracticeAppointment" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientId" />
+          </Key>
+          <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DNI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Appointments" Relationship="ProPaymentSummaryModel.FK_Appointment_Patient" FromRole="Patient" ToRole="Appointment" />
+        </EntityType>
+        <EntityType Name="PracticeAppointment">
+          <Key>
+            <PropertyRef Name="PracticeAppointmentId" />
+          </Key>
+          <Property Name="PracticeAppointmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PracticeId" Type="Int32" Nullable="false" />
+          <Property Name="AppointmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Appointment" Relationship="ProPaymentSummaryModel.FK_PracticeAppointment_Appointment" FromRole="PracticeAppointment" ToRole="Appointment" />
+          <NavigationProperty Name="Practice" Relationship="ProPaymentSummaryModel.FK_PracticeAppointment_Practice" FromRole="PracticeAppointment" ToRole="Practice" />
+        </EntityType>
+        <Association Name="FK_Appointment_HealthInsuranceProvider">
+          <End Type="ProPaymentSummaryModel.HealthInsuranceProvider" Role="HealthInsuranceProvider" Multiplicity="1" />
+          <End Type="ProPaymentSummaryModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HealthInsuranceProvider">
+              <PropertyRef Name="HealthInsuranceProviderId" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="HealthInsuranceProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Appointment_Patient">
+          <End Type="ProPaymentSummaryModel.Patient" Role="Patient" Multiplicity="0..1" />
+          <End Type="ProPaymentSummaryModel.Appointment" Role="Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientId" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticeAppointment_Appointment">
+          <End Type="ProPaymentSummaryModel.Appointment" Role="Appointment" Multiplicity="1" />
+          <End Type="ProPaymentSummaryModel.PracticeAppointment" Role="PracticeAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Appointment">
+              <PropertyRef Name="AppointmentId" />
+            </Principal>
+            <Dependent Role="PracticeAppointment">
+              <PropertyRef Name="AppointmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PracticeAppointment_Practice">
+          <End Type="ProPaymentSummaryModel.Practice" Role="Practice" Multiplicity="1" />
+          <End Type="ProPaymentSummaryModel.PracticeAppointment" Role="PracticeAppointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Practice">
+              <PropertyRef Name="PracticeId" />
+            </Principal>
+            <Dependent Role="PracticeAppointment">
+              <PropertyRef Name="PracticeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ProPaymentSummaryModelStoreContainer" CdmEntityContainer="ProPaymentSummaryEntities" >
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="ProPaymentSummaryModel.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="ProPaymentSummaryModel.AspNetUserClaim">
-              <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="ProPaymentSummaryModel.AspNetUserLogin">
-              <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="ProPaymentSummaryModel.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="HealthInsuranceProviders">
             <EntityTypeMapping TypeName="ProPaymentSummaryModel.HealthInsuranceProvider">
               <MappingFragment StoreEntitySet="HealthInsuranceProvider">
@@ -595,19 +381,6 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="HealthInsuranceProviderId" ColumnName="HealthInsuranceProviderId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="ProPaymentSummaryModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="PatientBirthDate" ColumnName="PatientBirthDate" />
-                <ScalarProperty Name="PatientDNI" ColumnName="PatientDNI" />
-                <ScalarProperty Name="AttentionDate" ColumnName="AttentionDate" />
-                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
-                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
-                <ScalarProperty Name="HealthInsuranceProviderId" ColumnName="HealthInsuranceProviderId" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -619,15 +392,6 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="PracticeId" ColumnName="PracticeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PracticeOrders">
-            <EntityTypeMapping TypeName="ProPaymentSummaryModel.PracticeOrder">
-              <MappingFragment StoreEntitySet="PracticeOrder">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="PracticeId" ColumnName="PracticeId" />
-                <ScalarProperty Name="PracticeOrderId" ColumnName="PracticeOrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -648,14 +412,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ProPaymentSummaryModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="Provinces">
             <EntityTypeMapping TypeName="ProPaymentSummaryModel.Province">
               <MappingFragment StoreEntitySet="Province">
@@ -669,6 +425,39 @@
               <MappingFragment StoreEntitySet="Professional">
                 <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
                 <ScalarProperty Name="ProfessionalId" ColumnName="ProfessionalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="ProPaymentSummaryModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="AttentionDate" ColumnName="AttentionDate" />
+                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="HealthInsuranceProviderId" ColumnName="HealthInsuranceProviderId" />
+                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="ProPaymentSummaryModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracticeAppointments">
+            <EntityTypeMapping TypeName="ProPaymentSummaryModel.PracticeAppointment">
+              <MappingFragment StoreEntitySet="PracticeAppointment">
+                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
+                <ScalarProperty Name="PracticeId" ColumnName="PracticeId" />
+                <ScalarProperty Name="PracticeAppointmentId" ColumnName="PracticeAppointmentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

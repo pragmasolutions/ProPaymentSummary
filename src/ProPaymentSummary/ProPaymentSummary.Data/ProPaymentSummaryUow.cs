@@ -15,12 +15,11 @@ namespace ProPaymentSummary.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        public IRepository<AspNetRole> AspNetRoles { get { return GetStandardRepo<AspNetRole>(); } }
-        public IRepository<AspNetUser> AspNetUsers { get { return GetStandardRepo<AspNetUser>(); } }
         public IRepository<HealthInsuranceProvider> HealthInsuranceProviders { get { return GetStandardRepo<HealthInsuranceProvider>(); } }
-        public IRepository<Order> Orders { get { return GetStandardRepo<Order>(); } }
+        public IRepository<Appointment> Appointments { get { return GetStandardRepo<Appointment>(); } }
+        public IRepository<Patient> Patients { get { return GetStandardRepo<Patient>(); } }
         public IRepository<Practice> Practices { get { return GetStandardRepo<Practice>(); } }
-        public IRepository<PracticeOrder> PracticeOrders { get { return GetStandardRepo<PracticeOrder>(); } }
+        public IRepository<PracticeAppointment> PracticeAppointments { get { return GetStandardRepo<PracticeAppointment>(); } }
         public IRepository<Professional> Professionals { get { return GetStandardRepo<Professional>(); } }
         public IRepository<Province> Provinces { get { return GetStandardRepo<Province>(); } }
 

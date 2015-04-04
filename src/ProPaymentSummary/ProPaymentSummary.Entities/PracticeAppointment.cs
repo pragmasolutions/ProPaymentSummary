@@ -12,16 +12,13 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetRole
+    public partial class PracticeAppointment
     {
-        public AspNetRole()
-        {
-            this.AspNetUsers = new HashSet<AspNetUser>();
-        }
+        public int PracticeAppointmentId { get; set; }
+        public int PracticeId { get; set; }
+        public int AppointmentId { get; set; }
     
-        public string Id { get; set; }
-        public string Name { get; set; }
-    
-        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
+        public virtual Appointment Appointment { get; set; }
+        public virtual Practice Practice { get; set; }
     }
 }

@@ -9,12 +9,11 @@ namespace ProPaymentSummary.Data.Interfaces
 {
     public interface IProPaymentSummaryUow : IDisposable
     {
-        IRepository<AspNetRole> AspNetRoles { get; }
-        IRepository<AspNetUser> AspNetUsers { get; }
         IRepository<HealthInsuranceProvider> HealthInsuranceProviders { get; }
-        IRepository<Order> Orders { get; }
+        IRepository<Appointment> Appointments { get; }
+        IRepository<Patient> Patients { get; }
         IRepository<Practice> Practices { get; }
-        IRepository<PracticeOrder> PracticeOrders { get; }
+        IRepository<PracticeAppointment> PracticeAppointments { get; }
         IRepository<Professional> Professionals { get; }
         IRepository<Province> Provinces { get; }
 

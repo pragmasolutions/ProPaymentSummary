@@ -8,5 +8,6 @@ namespace ProPaymentSummary.Service.Data
 {
     public class AppointmentData
     {
+        public int Id { get; set; }
     }
 }

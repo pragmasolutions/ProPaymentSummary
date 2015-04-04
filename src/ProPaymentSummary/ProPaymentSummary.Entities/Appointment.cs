@@ -12,22 +12,22 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Appointment
     {
-        public Order()
+        public Appointment()
         {
-            this.PracticeOrders = new HashSet<PracticeOrder>();
+            this.PracticeAppointments = new HashSet<PracticeAppointment>();
         }
     
-        public int OrderId { get; set; }
+        public int AppointmentId { get; set; }
         public int HealthInsuranceProviderId { get; set; }
         public int OrderNumber { get; set; }
         public string PatientName { get; set; }
         public System.DateTime AttentionDate { get; set; }
-        public Nullable<int> PatientDNI { get; set; }
-        public Nullable<System.DateTime> PatientBirthDate { get; set; }
+        public Nullable<int> PatientId { get; set; }
     
         public virtual HealthInsuranceProvider HealthInsuranceProvider { get; set; }
-        public virtual ICollection<PracticeOrder> PracticeOrders { get; set; }
+        public virtual Patient Patient { get; set; }
+        public virtual ICollection<PracticeAppointment> PracticeAppointments { get; set; }
     }
 }

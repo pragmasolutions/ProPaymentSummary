@@ -12,13 +12,20 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class PracticeOrder
+    public partial class Patient
     {
-        public int PracticeOrderId { get; set; }
-        public int PracticeId { get; set; }
-        public int OrderId { get; set; }
+        public Patient()
+        {
+            this.Appointments = new HashSet<Appointment>();
+        }
     
-        public virtual Order Order { get; set; }
-        public virtual Practice Practice { get; set; }
+        public int PatientId { get; set; }
+        public string Name { get; set; }
+        public string DNI { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+    
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }
