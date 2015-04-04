@@ -18,8 +18,6 @@ namespace ProPaymentSummary.Data.Interfaces
         IRepository<Professional> Professionals { get; }
         IRepository<Province> Provinces { get; }
 
-        bool IsDisposed { get; }
-
         void Commit();
     }
 }

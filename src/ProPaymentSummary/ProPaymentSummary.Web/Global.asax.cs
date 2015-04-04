@@ -17,8 +17,10 @@ namespace ProPaymentSummary.Web
             GlobalConfiguration.Configure(config =>
             {
                 config.MapHttpAttributeRoutes(); 
+
                 ODataConfig.Register(config);
                 WebApiConfig.Register(config);
+                IocConfig.RegisterIoc(config);
             });
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

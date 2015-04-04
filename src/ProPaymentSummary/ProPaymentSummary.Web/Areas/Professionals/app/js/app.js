@@ -984,3 +984,8 @@ app.constant('ASSETS', {
 		]
 	}
 });
+
+var serviceBase = '/Professionals/api';
+app.constant('appSettings', {
+    apiServiceBaseUri: serviceBase
+});
