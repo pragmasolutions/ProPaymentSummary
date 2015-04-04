@@ -196,16 +196,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\ApiBaseController.cs" />
     <Compile Include="Api\ProfessionalController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\IocConfig.cs" />
     <Compile Include="App_Start\ODataConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Api\OrdersController.cs" />
     <Compile Include="Areas\Professionals\Api\ProfessionalsController.cs" />
+    <Compile Include="Areas\Professionals\Api\PatientsController.cs" />
     <Compile Include="Areas\Professionals\Api\AppointmentsController.cs" />
     <Compile Include="Areas\Professionals\Controllers\AppointmentsController.cs" />
     <Compile Include="Areas\Professionals\Controllers\HomeController.cs" />
@@ -982,11 +985,13 @@
     <Content Include="Areas\Professionals\app\js\angular\version.txt" />
     <Content Include="Areas\Professionals\app\js\app.js" />
     <Content Include="Areas\Professionals\app\js\controllers.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\patient\orderController.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\order\orderDataSource.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\patient\patientService.js" />
     <Content Include="Areas\Professionals\app\js\controllers\user\profileController.js" />
     <Content Include="Areas\Professionals\app\js\controllers\order\orderController.js" />
     <Content Include="Areas\Professionals\app\js\directives.js" />
     <Content Include="Areas\Professionals\app\js\factory.js" />
-    <Content Include="Areas\Professionals\app\js\index.html" />
     <Content Include="Areas\Professionals\app\js\min\app-min.js" />
     <Content Include="Areas\Professionals\app\js\min\controllers-min.js" />
     <Content Include="Areas\Professionals\app\js\min\directives-min.js" />
@@ -997,7 +1002,6 @@
     <Content Include="Areas\Professionals\app\js\oc-lazyload\ocLazyLoad.js" />
     <Content Include="Areas\Professionals\app\js\oc-lazyload\ocLazyLoad.min.js" />
     <Content Include="Areas\Professionals\app\js\services.js" />
-    <Content Include="Areas\Professionals\app\js\controllers\order\orderDataSource.js" />
     <Content Include="Areas\Professionals\app\js\controllers\order\orderModel.js" />
     <Content Include="Areas\Professionals\app\js\widgets.js" />
     <Content Include="Areas\Professionals\app\js\xenon-custom.js" />
@@ -2828,6 +2832,10 @@
     <ProjectReference Include="..\ProPaymentSummary.Data\ProPaymentSummary.Data.csproj">
       <Project>{FB822583-BD97-47BA-8171-DC47D2C36BC7}</Project>
       <Name>ProPaymentSummary.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Framework.Ioc\Framework.Ioc.csproj">
+      <Project>{e798e2fc-63af-439d-933c-5a93e018cfa4}</Project>
+      <Name>Framework.Ioc</Name>
     </ProjectReference>
     <ProjectReference Include="..\ProPaymentSummary.Entities\ProPaymentSummary.Entities.csproj">
       <Project>{17596385-2366-4946-8504-c1af4fbf1c5f}</Project>

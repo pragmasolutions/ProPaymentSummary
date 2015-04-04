@@ -15,7 +15,6 @@ namespace ProPaymentSummary.Data
             RepositoryProvider = repositoryProvider;
         }
 
-        // Repositories
         public IRepository<AspNetRole> AspNetRoles { get { return GetStandardRepo<AspNetRole>(); } }
         public IRepository<AspNetUser> AspNetUsers { get { return GetStandardRepo<AspNetUser>(); } }
         public IRepository<HealthInsuranceProvider> HealthInsuranceProviders { get { return GetStandardRepo<HealthInsuranceProvider>(); } }
@@ -24,9 +23,6 @@ namespace ProPaymentSummary.Data
         public IRepository<PracticeOrder> PracticeOrders { get { return GetStandardRepo<PracticeOrder>(); } }
         public IRepository<Professional> Professionals { get { return GetStandardRepo<Professional>(); } }
         public IRepository<Province> Provinces { get { return GetStandardRepo<Province>(); } }
-        //public ITituloRepository Titulos { get { return GetRepo<ITituloRepository>(); } }
-
-        public bool IsDisposed { get; private set; }
 
         /// <summary>
         /// Save pending changes to the database
@@ -86,13 +82,8 @@ namespace ProPaymentSummary.Data
                     DbContext.Dispose();
                 }
             }
-
-            IsDisposed = true;
         }
 
         #endregion
-
-
-        
     }
 }
