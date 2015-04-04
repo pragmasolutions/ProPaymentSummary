@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using ProPaymentSummary.Web.Models;
 using System.Collections.Generic;
 using System.IO;
+using System.Drawing;
 
 namespace ProPaymentSummary.Web.Areas.Professionals.Controllers
 {
@@ -28,7 +29,7 @@ namespace ProPaymentSummary.Web.Areas.Professionals.Controllers
                     Directory.CreateDirectory(tempPath);
 
                 var extension = fileName.Split('.').Last().ToString();
-                var finalName = String.Format("{0}.{1}", User.Identity.GetUserId(), extension);
+                var finalName = String.Format("{0}.png", User.Identity.GetUserId());
                 var physicalPath = Path.Combine(tempPath, finalName);
 
                 file.SaveAs(physicalPath);
@@ -36,6 +37,30 @@ namespace ProPaymentSummary.Web.Areas.Professionals.Controllers
                 return Content("");
             }
             return Content("No se ha seleccionado ningún archivo");
+        }
+
+        public ActionResult SaveUserImage(int x, int y, int w, int h) 
+        {
+            var rectangle = new Rectangle()
+            {
+                X = x,
+                Y = y,
+                Width = w,
+                Height = h
+            };
+
+            var tempPath = Server.MapPath("~/Temp");
+            var finalName = String.Format("{0}.png", User.Identity.GetUserId());
+            var physicalPath = Path.Combine(tempPath, finalName);
+            var image = Image.FromFile(physicalPath);
+            var croppedImage = CropImage(image, rectangle);
+            return null;
+        }
+
+        private static Image CropImage(Image img, Rectangle cropArea)
+        {
+            Bitmap bmpImage = new Bitmap(img);
+            return bmpImage.Clone(cropArea, bmpImage.PixelFormat);
         }
 
     }

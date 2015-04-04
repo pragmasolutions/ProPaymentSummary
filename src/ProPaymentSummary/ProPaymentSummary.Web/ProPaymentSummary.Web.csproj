@@ -205,6 +205,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Api\OrdersController.cs" />
+    <Compile Include="Areas\Professionals\Api\ProfessionalsController.cs" />
     <Compile Include="Areas\Professionals\Api\AppointmentsController.cs" />
     <Compile Include="Areas\Professionals\Controllers\AppointmentsController.cs" />
     <Compile Include="Areas\Professionals\Controllers\HomeController.cs" />

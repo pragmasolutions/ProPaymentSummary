@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IProfessionalService.cs" />
+    <Compile Include="ProfessionalService.cs" />
     <Compile Include="AppointmentService.cs" />
     <Compile Include="Data\AppointmentData.cs" />
     <Compile Include="Dto\AppointmentDto.cs" />
@@ -46,7 +48,12 @@
     <Compile Include="Interfaces\IAppointmentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProPaymentSummary.Entities\ProPaymentSummary.Entities.csproj">
+      <Project>{17596385-2366-4946-8504-c1af4fbf1c5f}</Project>
+      <Name>ProPaymentSummary.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

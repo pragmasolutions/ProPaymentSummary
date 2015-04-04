@@ -185,9 +185,10 @@
             }
         });
 
+        debugger;
         var imageLoad = function () {
             window.data("kendoWindow").open().center();
-            var preview_size = [220, 145],
+            var preview_size = [220, 220],
                 aspect_ratio = preview_size[0] / preview_size[1],
                 selection = {
                     x: null,
@@ -200,6 +201,7 @@
             // Plugin Initialization
             $image.cropper({
                 aspectRatio: aspect_ratio,
+                minCropBoxWidth: 220,
                 done: function (data) {
                     selection.x = data.x;
                     selection.y = data.y;
