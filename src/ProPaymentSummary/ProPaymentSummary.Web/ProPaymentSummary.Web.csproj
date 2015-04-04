@@ -213,6 +213,7 @@
     <Compile Include="Areas\Professionals\Controllers\HomeController.cs" />
     <Compile Include="Areas\Professionals\Controllers\ImageController.cs" />
     <Compile Include="Areas\Professionals\ProfessionalsAreaRegistration.cs" />
+    <Compile Include="Configuration\CurrentContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -2827,6 +2828,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProPaymentSummary.Data\ProPaymentSummary.Data.csproj">
+      <Project>{FB822583-BD97-47BA-8171-DC47D2C36BC7}</Project>
+      <Name>ProPaymentSummary.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework.Ioc\Framework.Ioc.csproj">
       <Project>{e798e2fc-63af-439d-933c-5a93e018cfa4}</Project>
       <Name>Framework.Ioc</Name>
