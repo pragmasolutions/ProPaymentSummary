@@ -991,6 +991,9 @@
     <Content Include="Areas\Professionals\app\js\app.js" />
     <Content Include="Areas\Professionals\app\js\controllers.js" />
     <Content Include="Areas\Professionals\app\js\controllers\patient\patientController.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\professional\professionalController.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\professional\professionalService.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\patient\orderController.js" />
     <Content Include="Areas\Professionals\app\js\controllers\order\orderDataSource.js" />
     <Content Include="Areas\Professionals\app\js\controllers\patient\patientService.js" />
     <Content Include="Areas\Professionals\app\js\controllers\user\profileController.js" />
@@ -2756,6 +2759,9 @@
     <Content Include="Areas\Professionals\Views\Appointments\Edit.cshtml" />
     <Content Include="Areas\Professionals\Views\Appointments\Delete.cshtml" />
     <Content Include="Areas\Professionals\Views\Patient\Create.cshtml" />
+    <Content Include="Areas\Professionals\assets\js\jquery-validate\localization\messages_es_AR.min.js.map">
+      <DependentUpon>messages_es_AR.min.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

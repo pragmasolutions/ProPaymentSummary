@@ -11,6 +11,6 @@ namespace ProPaymentSummary.Service.Interfaces
 {
     public interface IProfessionalService
     {
-        IQueryable<Professional> Get(string id);
+        ProfessionalDto Get(string id);
     }
 }

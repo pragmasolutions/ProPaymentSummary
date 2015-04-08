@@ -844,7 +844,8 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 						ASSETS.core.googleMapsLoader,
 						ASSETS.icons.elusive,
                         ASSETS.extra.cropper,
-                        ASSETS.forms.inputmask
+                        ASSETS.forms.inputmask,
+                        ASSETS.forms.jQueryValidate
                     ]);
                 },
             }
@@ -929,8 +930,11 @@ app.constant('ASSETS', {
 
 		'formWizard': appHelper.assetPath('js/formwizard/jquery.bootstrap.wizard.min.js'),
 
-		'jQueryValidate': appHelper.assetPath('js/jquery-validate/jquery.validate.min.js'),
-
+		'jQueryValidate': [
+		    appHelper.assetPath('js/jquery-validate/jquery.validate.min.js'),
+            appHelper.assetPath('js/jquery-validate/localization/messages_es_AR.js'),
+		],
+	    
 		'dropzone': [
 			appHelper.assetPath('js/dropzone/css/dropzone.css'),
 			appHelper.assetPath('js/dropzone/dropzone.min.js'),
