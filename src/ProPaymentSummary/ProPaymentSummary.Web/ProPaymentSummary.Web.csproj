@@ -985,6 +985,8 @@
     <Content Include="Areas\Professionals\app\js\angular\version.txt" />
     <Content Include="Areas\Professionals\app\js\app.js" />
     <Content Include="Areas\Professionals\app\js\controllers.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\professional\professionalController.js" />
+    <Content Include="Areas\Professionals\app\js\controllers\professional\professionalService.js" />
     <Content Include="Areas\Professionals\app\js\controllers\patient\orderController.js" />
     <Content Include="Areas\Professionals\app\js\controllers\order\orderDataSource.js" />
     <Content Include="Areas\Professionals\app\js\controllers\patient\patientService.js" />

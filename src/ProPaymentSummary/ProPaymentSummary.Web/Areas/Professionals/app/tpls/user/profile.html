@@ -185,7 +185,6 @@
             }
         });
 
-        debugger;
         var imageLoad = function () {
             window.data("kendoWindow").open().center();
             var preview_size = [220, 220],
@@ -211,13 +210,6 @@
             });
         }
 
-
-
-
-        //$("#dialog").kendoWindow();
-        //var dialog = $("#dialog").data("kendoWindow");
-        //dialog.center();
-
         var window = $("#window"),
                         undo = $("#undo")
                                 .bind("click", function () {
@@ -239,11 +231,5 @@
             });
         }
 
-
-
-        //$("#crop-img").on('click', function (ev) {
-        //    ev.preventDefault();
-        //    window.open($(this).attr('href') + "?x=" + selection.x + "&y=" + selection.y + "&w=" + selection.w + "&h=" + selection.h + "&tw=" + preview_size[0] + "&th=" + preview_size[1]);
-        //});
     });
 </script>

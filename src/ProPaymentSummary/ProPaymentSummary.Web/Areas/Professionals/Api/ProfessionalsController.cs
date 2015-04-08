@@ -17,10 +17,13 @@ using ProPaymentSummary.Service.Interfaces;
 using ProPaymentSummary.Service;
 using ProPaymentSummary.Entities;
 using ProPaymentSummary.Web.Configuration;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 
 namespace ProPaymentSummary.Web.Areas.Professionals.Api
 {
-    public class ProfessionalsController : ApiController
+    public class ProfessionalsController : ODataController
     {
         private readonly IProfessionalService _professionalService;
 
@@ -34,9 +37,20 @@ namespace ProPaymentSummary.Web.Areas.Professionals.Api
         {
         }
 
-        public Professional LoggedInProfessional()
+        
+        //public async Task<IHttpActionResult> GetLoggedInProfessional()
+        //{
+        //    var prof = await _professionalService.Get(User.Identity.GetUserId());
+
+        //    return prof;
+        //}
+
+        public ProfessionalDto GetLoggedInProfessional()
         {
-            return CurrentContext.Professional;
+            
+            var prof = _professionalService.Get(User.Identity.GetUserId());
+
+            return prof;
         }
     }
 }
