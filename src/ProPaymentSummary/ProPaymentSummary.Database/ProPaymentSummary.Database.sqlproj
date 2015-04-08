@@ -80,4 +80,7 @@
   <ItemGroup>
     <RefactorLog Include="ProPaymentSummary.Database.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ProPaymentSummary.Database.publish.xml" />
+  </ItemGroup>
 </Project>

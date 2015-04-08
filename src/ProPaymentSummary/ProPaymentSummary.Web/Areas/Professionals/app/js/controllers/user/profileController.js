@@ -16,8 +16,8 @@
         //$scope.MN = "123456";
         //$scope.ProfileImageUrl = '/Areas/Professionals/assets/images/user-4.png';
 
-        $http.get('/odata/professionals')
-            .success(function (data, status, headers, config) {
+        $http.get('/api/professional/current')
+            .success(function(data, status, headers, config) {
                 $scope.LastName = data.LastName;
                 $scope.FirstName = data.FirstName;
                 $scope.Address = data.Address;
@@ -27,7 +27,7 @@
                 $scope.CUIT = data.CUIT;
                 $scope.DNI = data.DNI;
                 $scope.MN = data.DNI;
-                $scope.ProfileImageUrl = data.ProfileImageUrl;
-            })
+                $scope.ProfileImageUrl = data != "null" ? data.ProfileImageUrl : '/Areas/Professionals/assets/images/user-4.png';
+            });
     });
 })()

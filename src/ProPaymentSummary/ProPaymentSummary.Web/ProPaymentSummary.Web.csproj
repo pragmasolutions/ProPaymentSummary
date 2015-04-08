@@ -2749,6 +2749,9 @@
     <Content Include="Areas\Professionals\Views\Appointments\Create.cshtml" />
     <Content Include="Areas\Professionals\Views\Appointments\Edit.cshtml" />
     <Content Include="Areas\Professionals\Views\Appointments\Delete.cshtml" />
+    <Content Include="Areas\Professionals\assets\js\jquery-validate\localization\messages_es_AR.min.js.map">
+      <DependentUpon>messages_es_AR.min.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

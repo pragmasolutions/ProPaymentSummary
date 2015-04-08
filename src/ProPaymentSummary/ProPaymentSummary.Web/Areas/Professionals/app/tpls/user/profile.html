@@ -1,6 +1,6 @@
 
 
-	<page-title ng-if="layoutOptions.pageTitles" title="Profile" description="User profile and story timeline"></page-title>
+	<page-title ng-if="layoutOptions.pageTitles" title="Informaci&oacute;n de Profesional" description="Desde aqu&iacute; puedes editar tu informaci&oacute;n personal"></page-title>
 
 
 <section class="profile-env">
@@ -31,17 +31,17 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Informaci&oacute;n de Profesional</h3>
+                    <h3 class="panel-title">Informaci&oacute;n de Profesional &nbsp;&nbsp;<a href="#" id="lnkEditar">(Editar)</a></h3>
                 </div>
                 <div class="panel-body">
 
-                    <form role="form" class="form-horizontal" role="form">
+                    <form role="form" class="form-horizontal validate" role="form" method="POST">
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="LastName">Apellido</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="LastName" disabled ng-model="LastName">
+                                <input type="text" class="form-control" id="LastName" name="LastName" disabled ng-model="LastName" data-validate="required">
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                             <label class="col-sm-2 control-label" for="FirstName">Nombre</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="FirstName" disabled ng-model="FirstName">
+                                <input type="text" class="form-control" id="FirstName" name="FirstName" disabled ng-model="FirstName" data-validate="required">
                             </div>
                         </div>
 
@@ -61,7 +61,7 @@
                             <label class="col-sm-2 control-label" for="Address">Direcci&oacute;n</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="Address" disabled ng-model="Address">
+                                <input type="text" class="form-control" id="Address" name="Address" disabled ng-model="Address" data-validate="required">
                             </div>
                         </div>
 
@@ -71,7 +71,7 @@
                             <label class="col-sm-2 control-label" for="Province">Provincia</label>
 
                             <div class="col-sm-10">
-                                <select class="form-control" id="Province" disabled ng-model="ProvinceId">
+                                <select class="form-control" id="Province" name="Province" disabled ng-model="ProvinceId" data-validate="required">
                                     <option>Option 1</option>
                                     <option>Option 2</option>
                                     <option>Option 3</option>
@@ -87,7 +87,7 @@
                             <label class="col-sm-2 control-label" for="City">Ciudad</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="City" disabled ng-model="City">
+                                <input type="text" class="form-control" id="City" name="City" disabled ng-model="City" data-validate="required">
                             </div>
                         </div>
 
@@ -97,7 +97,7 @@
                             <label class="col-sm-2 control-label" for="Phone">Tel&eacute;fono</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="Phone" disabled ng-model="Phone">
+                                <input type="text" class="form-control" id="Phone" name="Phone" disabled ng-model="Phone" data-validate="required">
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@
                             <label class="col-sm-2 control-label" for="CUIT">CUIT</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="CUIT" inputmask data-mask="99-99999999-9" disabled ng-model="CUIT">
+                                <input type="text" class="form-control" id="CUIT" name="CUIT" inputmask data-mask="99-99999999-9" disabled ng-model="CUIT" data-validate="required">
                             </div>
                         </div>
 
@@ -117,18 +117,25 @@
                             <label class="col-sm-2 control-label" for="DNI">DNI</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="DNI" disabled ng-model="DNI">
+                                <input type="text" class="form-control" id="DNI" name="DNI" disabled ng-model="DNI" data-validate="required">
                             </div>
                         </div>
 
                         <div class="form-group-separator"></div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="MN">Nº Matr&iacute;cula</label>
+                            <label class="col-sm-2 control-label" for="MN">Nro. Matr&iacute;cula</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="MN" disabled ng-model="MN">
+                                <input type="text" class="form-control" id="MN" name="MN" disabled ng-model="MN" data-validate="required">
                             </div>
+                        </div>
+
+                        <div class="form-group-separator"></div>
+
+                        <div class="form-group" style="display: none;" id="buttons-pane">
+                            <button type="submit" class="btn btn-success pull-right" id="btnSubmit" style="margin-right: 15px;">Guardar Cambios</button>
+                            <button type="reset" class="btn btn-white pull-right" style="margin-right: 5px;" id="btnCancelar">Cancelar</button>
                         </div>
                     </form>
                 </div>
@@ -158,6 +165,23 @@
 
 <script>
     $(function () {
+        $('#lnkEditar').click(function() {
+            $('.panel-body form input[type=text], .panel-body form select').removeAttr('disabled');
+            $('#LastName').focus();
+
+            $(this).hide();
+            $('#buttons-pane').show();
+            return false;
+        });
+
+        $('#btnCancelar').click(function () {
+            $('.panel-body form input[type=text], .panel-body form select').attr('disabled', 'disabled');
+            
+            $('#lnkEditar').hide();
+            $('#buttons-pane').hide();
+            return false;
+        });
+
         $('#lnkCambiarImagen').click(function () {
             $("#files").click();
         });
