@@ -107,7 +107,8 @@
                             <label class="col-sm-2 control-label" for="CUIT">CUIT</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="CUIT" name="CUIT" inputmask data-mask="99-99999999-9" disabled ng-model="CUIT" data-validate="required">
+                                <input type="text" class="form-control" id="CUIT" name="CUIT"
+                                       disabled ng-model="CUIT" data-validate="required,minlength[11],maxlength[11]">
                             </div>
                         </div>
 
@@ -117,7 +118,8 @@
                             <label class="col-sm-2 control-label" for="DNI">DNI</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="DNI" name="DNI" disabled ng-model="DNI" data-validate="required">
+                                <input type="text" class="form-control" id="DNI" name="DNI" disabled ng-model="DNI"
+                                       data-validate="required,minlength[8],maxlength[8]" />
                             </div>
                         </div>
 
@@ -164,8 +166,25 @@
 </section>
 
 <script>
+    var dataBackup;
     $(function () {
+        $('.panel-body form').submit(function() {
+            return false;
+        });
+
         $('#lnkEditar').click(function() {
+            dataBackup = {
+                LastName : $('#LastName').val(),
+                FirstName : $('#FirstName').val(),
+                Address : $('#Address').val(),
+                ProvinceId : $('#ProvinceId').val(),
+                City : $('#City').val(),
+                Phone : $('#Phone').val(),
+                CUIT : $('#CUIT').val(),
+                DNI : $('#DNI').val(),
+                MN: $('#DNI').val()
+            };
+
             $('.panel-body form input[type=text], .panel-body form select').removeAttr('disabled');
             $('#LastName').focus();
 
@@ -175,9 +194,19 @@
         });
 
         $('#btnCancelar').click(function () {
-            $('.panel-body form input[type=text], .panel-body form select').attr('disabled', 'disabled');
+
+            $('#LastName').val(dataBackup.LastName);
+            $('#FirstName').val(dataBackup.FirstName);
+            $('#Address').val(dataBackup.Address);
+            $('#ProvinceId').val(dataBackup.ProvinceId);
+            $('#City').val(dataBackup.City);
+            $('#Phone').val(dataBackup.Phone);
+            $('#CUIT').val(dataBackup.CUIT);
+            $('#DNI').val(dataBackup.DNI);
+            $('#DNI').val(dataBackup.MN);
             
-            $('#lnkEditar').hide();
+            $('.panel-body form input[type=text], .panel-body form select').attr('disabled', 'disabled');
+            $('#lnkEditar').show();
             $('#buttons-pane').hide();
             return false;
         });
@@ -235,10 +264,10 @@
         }
 
         var window = $("#window"),
-                        undo = $("#undo")
-                                .bind("click", function () {
-                                    window.data("kendoWindow").open().center();
-                                });
+            undo = $("#undo")
+                .bind("click", function () {
+                    window.data("kendoWindow").open().center();
+                });
 
         var onClose = function () {
 
@@ -249,7 +278,7 @@
                 width: "400px",
                 title: "Cambiar imagen de perfil",
                 actions: [
-                   "Close"
+                    "Close"
                 ],
                 close: onClose
             });
