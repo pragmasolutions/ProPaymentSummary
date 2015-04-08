@@ -12,13 +12,20 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserClaim
+    public partial class Patient
     {
-        public int Id { get; set; }
-        public string UserId { get; set; }
-        public string ClaimType { get; set; }
-        public string ClaimValue { get; set; }
+        public Patient()
+        {
+            this.Appointments = new HashSet<Appointment>();
+        }
     
-        public virtual AspNetUser AspNetUser { get; set; }
+        public int PatientId { get; set; }
+        public string Name { get; set; }
+        public string DNI { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+    
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

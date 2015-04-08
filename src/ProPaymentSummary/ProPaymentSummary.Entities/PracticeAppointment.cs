@@ -12,12 +12,13 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class AspNetUserLogin
+    public partial class PracticeAppointment
     {
-        public string LoginProvider { get; set; }
-        public string ProviderKey { get; set; }
-        public string UserId { get; set; }
+        public int PracticeAppointmentId { get; set; }
+        public int PracticeId { get; set; }
+        public int AppointmentId { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual Appointment Appointment { get; set; }
+        public virtual Practice Practice { get; set; }
     }
 }

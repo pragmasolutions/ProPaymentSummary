@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Query;
-using System.Web.Http.OData.Routing;
-using ProPaymentSummary.Service.Dto;
-using Microsoft.Data.OData;
+using System.Web.OData.Query;
+using System.Web.OData;
+using ProPaymentSummary.Entities;
+using ProPaymentSummary.Service;
 using ProPaymentSummary.Service.Data;
 using ProPaymentSummary.Service.Interfaces;
-using ProPaymentSummary.Service;
 
 namespace ProPaymentSummary.Web.Areas.Professionals.Api
 {
@@ -32,7 +25,6 @@ namespace ProPaymentSummary.Web.Areas.Professionals.Api
         {
         }
 
-        // POST: odata/Patients
         public async Task<IHttpActionResult> Post(PatientData patientData)
         {
             if (!ModelState.IsValid)

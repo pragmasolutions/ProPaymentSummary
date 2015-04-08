@@ -82,9 +82,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http.OData">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.4.0\lib\net45\System.Web.Http.OData.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -2831,10 +2828,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProPaymentSummary.Data\ProPaymentSummary.Data.csproj">
-      <Project>{FB822583-BD97-47BA-8171-DC47D2C36BC7}</Project>
-      <Name>ProPaymentSummary.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Framework.Ioc\Framework.Ioc.csproj">
       <Project>{e798e2fc-63af-439d-933c-5a93e018cfa4}</Project>
       <Name>Framework.Ioc</Name>

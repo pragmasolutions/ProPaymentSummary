@@ -3,6 +3,8 @@ using ProPaymentSummary.Service.Dto;
 using System.Web.Http;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
+using ProPaymentSummary.Entities;
+using ProPaymentSummary.Service.Data;
 
 namespace ProPaymentSummary.Web
 {
@@ -12,9 +14,12 @@ namespace ProPaymentSummary.Web
         {
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             builder.EnableLowerCamelCase();
+
             builder.EntitySet<OrderDto>("orders");
             builder.EntitySet<OrderDto>("appointments");
             builder.EntitySet<ProfessionalDto>("professionals");
+            builder.EntitySet<PatientData>("patients");
+
             config.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
         }
     }

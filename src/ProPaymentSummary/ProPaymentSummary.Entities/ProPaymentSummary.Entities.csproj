@@ -39,28 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspNetRole.cs">
-      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUser.cs">
-      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUserClaim.cs">
-      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUserLogin.cs">
+    <Compile Include="Appointment.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="HealthInsuranceProvider.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Order.cs">
+    <Compile Include="Patient.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Practice.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="PracticeOrder.cs">
+    <Compile Include="PracticeAppointment.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Professional.cs">
