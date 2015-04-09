@@ -1,0 +1,8 @@
+﻿@model DateTime?
+
+@Html.Kendo().DatePicker().Name("datetimepicker").Value(Model).HtmlAttributes(new
+        {
+            @class = "form-control",
+            placeholder = ViewData.ModelMetadata.Watermark,
+            ng_model = Html.AngularBindingForModel()
+        })

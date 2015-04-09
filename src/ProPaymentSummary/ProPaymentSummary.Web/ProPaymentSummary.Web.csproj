@@ -226,6 +226,7 @@
     <Compile Include="Helpers\AngularTemplateHelper.cs" />
     <Compile Include="Helpers\BootstrapHelpers.cs" />
     <Compile Include="Helpers\JavaScriptHelper.cs" />
+    <Compile Include="Infrastructure\ModelMetadata\RenderAttribute.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -2817,6 +2818,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutCenter.cshtml" />
     <Content Include="Views\Account\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Angular\MultilineText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Angular\Object.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Angular\ReadOnly.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Angular\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Angular\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
