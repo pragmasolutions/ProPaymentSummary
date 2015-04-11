@@ -27,8 +27,8 @@ namespace ProPaymentSummary.Web.Areas.Professionals.Controllers
         // GET: Professionals/Professional
         public ActionResult Profile()
         {
-            //var prof = _professionalService.Get(User.Identity.GetUserId());
-            var prof = new ProfessionalDto();
+            var prof = _professionalService.Get(User.Identity.GetUserId());
+            //var prof = new ProfessionalDto();
             return View(prof);
         }
     }

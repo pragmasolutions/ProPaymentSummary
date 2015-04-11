@@ -25,8 +25,8 @@ namespace ProPaymentSummary.Entities
         public string MN { get; set; }
         public Nullable<int> ProvinceId { get; set; }
         public string City { get; set; }
+        public byte[] ProfileImage { get; set; }
     
         public virtual Province Province { get; set; }
-        public virtual ProfessionalImage ProfessionalImage { get; set; }
     }
 }

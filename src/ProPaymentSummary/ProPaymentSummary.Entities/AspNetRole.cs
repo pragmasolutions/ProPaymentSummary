@@ -12,11 +12,16 @@ namespace ProPaymentSummary.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class ProfessionalImage
+    public partial class AspNetRole
     {
-        public string ProfessionalId { get; set; }
-        public byte[] ProfileImage { get; set; }
+        public AspNetRole()
+        {
+            this.AspNetUsers = new HashSet<AspNetUser>();
+        }
     
-        public virtual Professional Professional { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

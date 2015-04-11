@@ -42,7 +42,22 @@
     <Compile Include="Appointment.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="HealthInsuranceProvider.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HealthInsuranceProviderPlan.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MedicalOrder.cs">
+      <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Patient.cs">
@@ -54,10 +69,10 @@
     <Compile Include="PracticeAppointment.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Professional.cs">
+    <Compile Include="PracticeOrder.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProfessionalImage.cs">
+    <Compile Include="Professional.cs">
       <DependentUpon>ProPaymentSummaryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ProPaymentSummaryModel.cs">
@@ -77,6 +92,7 @@
     <None Include="ProPaymentSummaryModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ProPaymentSummaryModel.cs</LastGenOutput>
+      <CustomToolNamespace>ProPaymentSummary.Entities</CustomToolNamespace>
     </None>
   </ItemGroup>
   <ItemGroup>
