@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\PatientDto.cs" />
     <Compile Include="Dto\ProfessionalDto.cs" />
     <Compile Include="Interfaces\IProfessionalService.cs" />
     <Compile Include="ProfessionalService.cs" />

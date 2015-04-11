@@ -118,9 +118,14 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 		    templateUrl: appHelper.templatePath('orders/list'),
 		}).
 
-        // Orders
-		state('app.create-patient', {
-		    url: '/create-patient',
+        // Patients
+        state('app.patients', {
+            url: '/patients',
+            templateUrl: '/Professionals/patient'
+        }).
+
+		state('app.patient-create', {
+		    url: '/patients/create',
 		    templateUrl: '/Professionals/patient/create'
 		}).
 

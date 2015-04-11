@@ -1,0 +1,27 @@
+﻿@using ProPaymentSummary.Service.Dto
+@model ProPaymentSummary.Service.Dto.PatientDto
+
+@(
+ Html.Kendo().Grid<PatientDto>()
+            .Name("grid")
+            .Columns(columns =>
+                     {
+                         columns.Bound(c => c.Name).Width(140);
+                         columns.Bound(c => c.DNI).Width(190);
+                         columns.Bound(c => c.Address);
+                         columns.Bound(c => c.Email).Width(110);
+                         columns.Bound(c => c.Phone).Width(110);
+                     })
+            .HtmlAttributes(new { style = "height: 380px;" })
+            .Scrollable()
+            .Groupable()
+            .Sortable()
+            .Pageable(pageable => pageable
+                .Refresh(true)
+                .PageSizes(true)
+                .ButtonCount(5))
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .Read(read => read.Url("~/api/patient")))
+)
+

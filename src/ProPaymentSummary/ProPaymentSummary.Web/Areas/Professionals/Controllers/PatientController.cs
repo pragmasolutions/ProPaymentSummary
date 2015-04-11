@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProPaymentSummary.Service.Data;
+using ProPaymentSummary.Service.Dto;
 
 namespace ProPaymentSummary.Web.Areas.Professionals.Controllers
 {
@@ -12,7 +13,8 @@ namespace ProPaymentSummary.Web.Areas.Professionals.Controllers
         // GET: Professionals/Patient
         public ActionResult Index()
         {
-            return View();
+            PatientDto patientDto = new PatientDto();
+            return View(patientDto);
         }
 
         // GET: Professionals/Patient/Details/5

@@ -84,7 +84,10 @@ angular.module('xenon.services', []).
 		this.prepareSidebarMenu = function()
 		{
 		    var orders = this.addItem('Ordenes', '/app/orders-list', 'fa fa-file-text-o');
+
 		    var patients = this.addItem('Pacientes', '/app/patients', 'fa fa-male');
+		    patients.addItem('Crear', '/app/patients/create');
+
 		    var healthInsuranceProviders = this.addItem('Pre Pagas', '/app/healthInsuranceProviders', 'fa fa-hospital-o');
 
 			var dashboard    = this.addItem('Dashboard', 		'/app/dashboard', 			'linecons-cog');
