@@ -65,7 +65,6 @@
     <Compile Include="Interfaces\IProPaymentSummaryUow.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUowFactory.cs" />
-    <Compile Include="ProPaymentSummaryUow.cs" />
     <Compile Include="ProPaymentSummaryModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -76,6 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProPaymentSummaryModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ProPaymentSummaryUow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\EFBaseRepository.cs" />
     <Compile Include="Repository\EFRepository.cs" />
@@ -84,15 +84,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="ProPaymentSummaryModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProPaymentSummaryModel.Designer.cs</LastGenOutput>
       <CustomToolNamespace>ProPaymentSummary.Entities</CustomToolNamespace>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="ProPaymentSummaryModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ProPaymentSummaryModel.edmx</DependentUpon>

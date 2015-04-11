@@ -20,13 +20,14 @@ namespace ProPaymentSummary.Entities
         }
     
         public int AppointmentId { get; set; }
-        public int HealthInsuranceProviderId { get; set; }
-        public int OrderNumber { get; set; }
-        public string PatientName { get; set; }
-        public System.DateTime AttentionDate { get; set; }
-        public Nullable<int> PatientId { get; set; }
+        public int PatientId { get; set; }
+        public int MedicalOrderId { get; set; }
+        public Nullable<decimal> Plus { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public int State { get; set; }
     
-        public virtual HealthInsuranceProvider HealthInsuranceProvider { get; set; }
+        public virtual MedicalOrder MedicalOrder { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual ICollection<PracticeAppointment> PracticeAppointments { get; set; }
     }

@@ -25,13 +25,18 @@ namespace ProPaymentSummary.Entities
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<HealthInsuranceProvider> HealthInsuranceProviders { get; set; }
+        public virtual DbSet<HealthInsuranceProviderPlan> HealthInsuranceProviderPlans { get; set; }
+        public virtual DbSet<MedicalOrder> MedicalOrders { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Practice> Practices { get; set; }
+        public virtual DbSet<PracticeAppointment> PracticeAppointments { get; set; }
+        public virtual DbSet<PracticeOrder> PracticeOrders { get; set; }
         public virtual DbSet<Professional> Professionals { get; set; }
         public virtual DbSet<Province> Provinces { get; set; }
-        public virtual DbSet<ProfessionalImage> ProfessionalImages { get; set; }
-        public virtual DbSet<Appointment> Appointments { get; set; }
-        public virtual DbSet<Patient> Patients { get; set; }
-        public virtual DbSet<PracticeAppointment> PracticeAppointments { get; set; }
     }
 }

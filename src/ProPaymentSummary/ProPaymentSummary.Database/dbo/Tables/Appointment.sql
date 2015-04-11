@@ -1,7 +1,5 @@
 ﻿CREATE TABLE [dbo].[Appointment] (
     [AppointmentId]  INT           IDENTITY (1, 1) NOT NULL,
-    [PatientName]    VARCHAR (250) NOT NULL,
-    [AttentionDate]  DATE          NOT NULL,
     [PatientId]      INT           NOT NULL,
     [MedicalOrderId] INT           NOT NULL,
     [Plus]           MONEY         NULL,

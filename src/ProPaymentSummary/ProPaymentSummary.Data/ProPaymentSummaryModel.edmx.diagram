@@ -4,21 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8cfe2cf95530422a88bd46fdda927926" Name="Diagram1" >
-        <EntityTypeShape EntityType="ProPaymentSummaryModel.HealthInsuranceProvider" Width="2.125" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="ProPaymentSummaryModel.Practice" Width="1.5" PointX="3.625" PointY="5.25" />
-        <EntityTypeShape EntityType="ProPaymentSummaryModel.Professional" Width="1.75" PointX="8" PointY="5" />
-        <EntityTypeShape EntityType="ProPaymentSummaryModel.Province" Width="1.5" PointX="5.75" PointY="6" />
-        <AssociationConnector Association="ProPaymentSummaryModel.FK_Professional_Province" />
-        <EntityTypeShape EntityType="ProPaymentSummaryModel.ProfessionalImage" Width="1.75" PointX="10.5" PointY="6" />
-        <AssociationConnector Association="ProPaymentSummaryModel.ProfessionalProfessionalImage" />
-        <EntityTypeShape EntityType="ProPaymentSummaryModel.Appointment" Width="1.5" PointX="3.625" PointY="1" />
-        <EntityTypeShape EntityType="ProPaymentSummaryModel.Patient" Width="1.5" PointX="1.375" PointY="5.125" />
-        <EntityTypeShape EntityType="ProPaymentSummaryModel.PracticeAppointment" Width="2.375" PointX="5.875" PointY="1.375" />
-        <AssociationConnector Association="ProPaymentSummaryModel.FK_Appointment_HealthInsuranceProvider" />
-        <AssociationConnector Association="ProPaymentSummaryModel.FK_Appointment_Patient" />
-        <AssociationConnector Association="ProPaymentSummaryModel.FK_PracticeAppointment_Appointment" />
-        <AssociationConnector Association="ProPaymentSummaryModel.FK_PracticeAppointment_Practice" />
+      <Diagram DiagramId="e4252dd0123d495e838625fa61d404b4" Name="Diagram1">
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.Appointment" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.HealthInsuranceProvider" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.HealthInsuranceProviderPlan" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.MedicalOrder" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.Order" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.Patient" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.Practice" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.PracticeAppointment" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.PracticeOrder" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.Professional" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProPaymentSummaryModel.Province" Width="1.5" PointX="9.75" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_Appointment_MedicalOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_Appointment_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_PracticeAppointment_Appointment" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_HealthInsuranceProviderPlan_HealthInsuranceProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_Order_HealthInsuranceProvider" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_MedicalOrder_HealthInsuranceProviderPlan" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_PracticeOrder_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_PracticeAppointment_Practice" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_PracticeOrder_Practice" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.FK_Professional_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="ProPaymentSummaryModel.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
