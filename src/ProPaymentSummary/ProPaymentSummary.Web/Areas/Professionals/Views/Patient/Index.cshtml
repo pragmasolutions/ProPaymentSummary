@@ -21,7 +21,7 @@
                 .PageSizes(true)
                 .ButtonCount(5))
             .DataSource(dataSource => dataSource
-                .Ajax()
+                .WebApi()
                 .Read(read => read.Url("~/api/patient")))
 )
 
