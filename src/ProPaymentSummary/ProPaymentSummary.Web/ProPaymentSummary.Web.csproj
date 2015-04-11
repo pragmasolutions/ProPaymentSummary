@@ -215,6 +215,7 @@
     <Compile Include="Areas\Professionals\Controllers\HomeController.cs" />
     <Compile Include="Areas\Professionals\Controllers\ImageController.cs" />
     <Compile Include="Areas\Professionals\Controllers\PatientController.cs" />
+    <Compile Include="Areas\Professionals\Controllers\ProfessionalController.cs" />
     <Compile Include="Areas\Professionals\ProfessionalsAreaRegistration.cs" />
     <Compile Include="Configuration\CurrentContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -994,7 +995,6 @@
     <Content Include="Areas\Professionals\app\js\controllers\patient\patientController.js" />
     <Content Include="Areas\Professionals\app\js\controllers\professional\professionalController.js" />
     <Content Include="Areas\Professionals\app\js\controllers\professional\professionalService.js" />
-    <Content Include="Areas\Professionals\app\js\controllers\patient\orderController.js" />
     <Content Include="Areas\Professionals\app\js\controllers\order\orderDataSource.js" />
     <Content Include="Areas\Professionals\app\js\controllers\patient\patientService.js" />
     <Content Include="Areas\Professionals\app\js\controllers\user\profileController.js" />
@@ -1095,7 +1095,6 @@
     <Content Include="Areas\Professionals\app\tpls\ui\tabs-accordions.html" />
     <Content Include="Areas\Professionals\app\tpls\ui\typography.html" />
     <Content Include="Areas\Professionals\app\tpls\update-highlights.html" />
-    <Content Include="Areas\Professionals\app\tpls\user\profile.html" />
     <Content Include="Areas\Professionals\app\tpls\widgets.html" />
     <Content Include="Areas\Professionals\assets\css\bootstrap.css" />
     <Content Include="Areas\Professionals\assets\css\custom.css" />
@@ -2763,6 +2762,7 @@
     <Content Include="Areas\Professionals\assets\js\jquery-validate\localization\messages_es_AR.min.js.map">
       <DependentUpon>messages_es_AR.min.js</DependentUpon>
     </Content>
+    <Content Include="Areas\Professionals\Views\Professional\Profile.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

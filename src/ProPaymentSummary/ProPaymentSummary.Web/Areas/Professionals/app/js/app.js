@@ -2,7 +2,6 @@
 
 var app = angular.module('xenon-app', [
 	'ngCookies',
-
 	'ui.router',
 	'ui.bootstrap',
 
@@ -35,7 +34,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 
 	$urlRouterProvider.otherwise('/app/dashboard-variant-1');
 
-	$stateProvider.
+    $stateProvider.
 		// Main Layout Structure
 		state('app', {
 			abstract: true,
@@ -834,10 +833,10 @@ app.config(function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ASS
 			}
         }).
 
-        //Profesional
+        
         state('app.user-profile', {
             url: '/user-profile',
-            templateUrl: appHelper.templatePath('user/profile'),
+            templateUrl: '/Professionals/professional/profile',
             resolve: {
                 profile: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([

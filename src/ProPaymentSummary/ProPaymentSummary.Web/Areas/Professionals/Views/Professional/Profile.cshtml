@@ -1,10 +1,19 @@
+﻿@using ProPaymentSummary.Web.Helpers
+@model ProPaymentSummary.Service.Dto.ProfessionalDto
 
+<page-title ng-if="layoutOptions.pageTitles" title="Informaci&oacute;n de Profesional" description="Desde aqu&iacute; puedes editar tu informaci&oacute;n personal"></page-title>
 
-	<page-title ng-if="layoutOptions.pageTitles" title="Informaci&oacute;n de Profesional" description="Desde aqu&iacute; puedes editar tu informaci&oacute;n personal"></page-title>
+<link href="/areas/professionals/assets/css/fonts/elusive/css/elusive.css" type="text/css">
+<link href="/areas/professionals/assets/js/cropper/cropper.min.css" type="text/css">
+
+<script src="/areas/professionals/assets/js/cropper/cropper.min.js"></script>
+<script src="/areas/professionals/assets/js/inputmask/jquery.inputmask.bundle.js"></script>
+<script src="/areas/professionals/assets/js/jquery-validate/jquery.validate.min.js"></script>
+<script src="/areas/professionals/assets/js/jquery-validate/localization/messages_es_AR.js"></script>
 
 
 <section class="profile-env">
-	
+
     <div class="row" ng-app="bioweb" ng-controller="UserProfileCtrl">
 
         <div class="col-sm-3">
@@ -21,7 +30,6 @@
                     <input name="files" id="files" type="file" value="Hacer cosas" accept=".jpg,.png,.gif" />
                 </div>
                 <a href="" class="user-name" id="lnkCambiarImagen">Cambiar Imagen</a>
-                
                 <hr />
             </div>
 
@@ -72,11 +80,11 @@
 
                             <div class="col-sm-10">
                                 <select class="form-control" id="Province" name="Province" disabled ng-model="ProvinceId" data-validate="required">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                    <option>Option 4</option>
-                                    <option>Option 5</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                    <option value="4">Option 4</option>
+                                    <option value="5">Option 5</option>
                                 </select>
                             </div>
                         </div>
@@ -132,7 +140,6 @@
                                 <input type="text" class="form-control" id="MN" name="MN" disabled ng-model="MN" data-validate="required">
                             </div>
                         </div>
-
                         <div class="form-group-separator"></div>
 
                         <div class="form-group" style="display: none;" id="buttons-pane">
@@ -150,19 +157,13 @@
     <!--CROPPER-->
     <div id="window" style="display: none;">
         <strong class="text-primary">Recortar Imagen</strong>
-        <br />
-        <br />
-
+        <br /><br />
         <div class="img-container">
-            
         </div>
-
-        <br />
-        <br />
-
+        <br /><br />
         <a id="crop-img" href="#" class="btn btn-secondary">Aceptar</a>
     </div>
-	
+
 </section>
 
 <script>
@@ -204,7 +205,7 @@
             $('#CUIT').val(dataBackup.CUIT);
             $('#DNI').val(dataBackup.DNI);
             $('#DNI').val(dataBackup.MN);
-            
+
             $('.panel-body form input[type=text], .panel-body form select').attr('disabled', 'disabled');
             $('#lnkEditar').show();
             $('#buttons-pane').hide();
@@ -215,28 +216,6 @@
             $("#files").click();
         });
 
-
-        $("#files").kendoUpload({
-            async: {
-                saveUrl: "/Professionals/Image/Save",
-                //removeUrl: "remove",
-                autoUpload: true
-            },
-            localization: {
-                select: "Seleccionar desde PC",
-                headerStatusUploaded: "Finalizado",
-                headerStatusUploading: "Cargando.."
-            },
-            multiple: false,
-            showFileList: false,
-            success: function (e) {
-                $('.img-container').empty();
-                var img = $('<img class="img-responsive">');
-                $(img).bind('load', imageLoad)
-                $(img).attr('src', '/Temp/' + appHelper.getCurrentId() + e.files[0].extension)
-                $('.img-container').append(img);
-            }
-        });
 
         var imageLoad = function () {
             window.data("kendoWindow").open().center();
@@ -262,6 +241,30 @@
                 }
             });
         }
+
+        $("#files").kendoUpload({
+            async: {
+                saveUrl: "/Professionals/Image/Save",
+                //removeUrl: "remove",
+                autoUpload: true
+            },
+            localization: {
+                select: "Seleccionar desde PC",
+                headerStatusUploaded: "Finalizado",
+                headerStatusUploading: "Cargando.."
+            },
+            multiple: false,
+            showFileList: false,
+            success: function (e) {
+                $('.img-container').empty();
+                var img = $('<img class="img-responsive">');
+                $(img).bind('load', imageLoad);
+                $(img).attr('src', '/Temp/' + appHelper.getCurrentId() + e.files[0].extension)
+                $('.img-container').append(img);
+            }
+        });
+
+
 
         var window = $("#window"),
             undo = $("#undo")
